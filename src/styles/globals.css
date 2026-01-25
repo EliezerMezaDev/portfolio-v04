@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 @import "tailwindcss";
 
 @theme {
@@ -9,4 +11,7 @@
 
   /* FOR TEXT */
   --color-light: #f5f5e1;
+
+  /* ----- FONTS ----- */
+  --font-poppins: "Roboto";
 }
