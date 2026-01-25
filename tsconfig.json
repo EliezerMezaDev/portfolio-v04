@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
+    "baseUrl": ".",
     "incremental": true,
     "plugins": [
       {
@@ -19,7 +20,11 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/app/*": ["./src/app/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/content/*": ["./src/content/*"],
+      "@/lib/*": [".src/lib/*"]
     }
   },
   "include": [
