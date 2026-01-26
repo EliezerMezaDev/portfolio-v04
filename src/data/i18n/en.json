@@ -1,0 +1,43 @@
+{
+  "site": {
+    "title": "EaMZ | Portfolio"
+  },
+  "nav": {
+    "home": "Home",
+    "experience": "Experience",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "personal_info": {
+    "location": "Nueva Esparta, Venezuela",
+    "role": "Software Developer"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "description": "{years} years of experience. {role} from {location}.",
+    "cta": "Explore my projects"
+  },
+  "experience_section": {
+    "title": "Experience",
+    "work_title": "Work experience",
+    "consulting_title": "Consulting projects"
+  },
+  "skills_section": {
+    "title": "Skills",
+    "frontend_title": "Frontend",
+    "backend_title": "Backend",
+    "database_title": "Databases"
+  },
+  "projects_section": {
+    "title": "Featured projects",
+    "view_all_button": "View all projects"
+  },
+  "about_page": {
+    "title": "About me",
+    "paragraph_1": "Full-Stack Developer on a mission to build functional and elegant software...",
+    "cta_cv": "Download CV"
+  },
+  "footer": {
+    "copyright": "© {year} {name}. All rights reserved."
+  }
+}

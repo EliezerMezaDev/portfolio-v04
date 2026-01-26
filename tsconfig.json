@@ -24,7 +24,9 @@
       "@/styles/*": ["./src/styles/*"],
       "@/components/*": ["./src/components/*"],
       "@/content/*": ["./src/content/*"],
-      "@/lib/*": ["./src/lib/*"]
+      "@/lib/*": ["./src/lib/*"],
+
+      "@/i18n/*": ["./src/data/i18n/*"]
     }
   },
   "include": [

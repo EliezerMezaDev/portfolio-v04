@@ -10,7 +10,6 @@ const navItems = [
   { name: "Home", href: "/", icon: Home },
   { name: "About", href: "/about", icon: User },
   { name: "Projects", href: "/projects", icon: FolderGit2 },
-  // El ancla funcionará si tienes un Section con id="contact"
   { name: "Contact", href: "#contact", icon: Mail },
 ];
 
@@ -18,20 +17,17 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
       <motion.nav
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5, type: "spring", stiffness: 260, damping: 20 }}
         className={cn(
-          "flex items-center gap-2 px-4 py-3 rounded-full",
-          // Estilos Glassmorphism (Vidrio)
-          "bg-white/70 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/5",
-          "dark:bg-neutral-900/70 dark:border-white/10 dark:shadow-black/20",
+          "flex items-center gap-2  rounded-full",
+          "bg-light-4/5 backdrop-blur-xl border border-base",
         )}
       >
         {navItems.map((item) => {
-          // Lógica: Está activo si la ruta coincide O si es un ancla y estamos en la ruta base (opcional)
           const isActive = pathname === item.href;
           const isAnchor = item.href.startsWith("#");
 
@@ -52,19 +48,20 @@ export default function Navbar() {
               key={item.name}
               href={item.href}
               onClick={handleClick}
-              className="relative px-3 py-2 rounded-full transition-colors group"
+              className={cn(
+                isActive ? "px-4" : "px-2",
+                "relative  py-2 rounded-full transition-colors group",
+              )}
               aria-label={item.name}
             >
-              {/* Fondo animado (Burbuja activa) */}
               {isActive && (
                 <motion.div
                   layoutId="active-nav-pill"
-                  className="absolute inset-0 bg-neutral-200/60 dark:bg-white/10 rounded-full"
+                  className="absolute inset-0 px-4 bg-accent  rounded-full"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
 
-              {/* Icono */}
               <span className="relative z-10 flex items-center justify-center">
                 <item.icon
                   size={22}
@@ -72,8 +69,8 @@ export default function Navbar() {
                   className={cn(
                     "transition-colors duration-200",
                     isActive
-                      ? "text-black dark:text-white"
-                      : "text-neutral-500 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white",
+                      ? "text-base-dark"
+                      : "text-light-4 group-hover:text-accent/50",
                   )}
                 />
               </span>
