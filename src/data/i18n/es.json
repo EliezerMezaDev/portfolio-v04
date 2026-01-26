@@ -10,12 +10,13 @@
   },
   "personal_info": {
     "location": "Nueva Esparta, Venezuela",
-    "role": "Desarrollador de software"
+    "role": "Frontend Developer"
   },
   "hero": {
     "greeting": "Hola, soy",
     "description": "{years} años de experiencia. {role} de {location}.",
-    "cta": "Explora mis proyectos"
+    "cta_1": "Explora mis proyectos",
+    "cta_2": "Contáctame"
   },
   "experience_section": {
     "title": "Experiencia",

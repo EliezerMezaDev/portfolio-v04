@@ -23,7 +23,7 @@
   --color-light-4: #d7dadd;
 
   /* ----- FONTS ----- */
-  --font-roboto: "Roboto";
+  /* --font-roboto: "Roboto"; */
 }
 
 * {
@@ -38,7 +38,19 @@
 /* ? UTILS */
 @layer components {
   .button {
-    @apply inline-flex items-center gap-1 px-8 py-4 rounded-full text-lg font-medium;
-    @apply bg-transparent border  border-transparent hover:border-accent text-accent transition-all duration-300 hover:bg-accent/10 active:scale-95;
+    @apply inline-block px-8 py-4 border border-main  text-light-4 font-semibold;
+    @apply duration-100 transition-all transform hover:scale-95;
+
+    &.--alt {
+      @apply bg-main text-light;
+    }
+  }
+
+  .bg-hexagon-patter {
+    background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='65' height='65' patternTransform='scale(5) rotate(45)'><rect x='0' y='0' width='100%' height='100%' fill='%23011d2fff'/><path d='M.5.5v12h12V.5H.5zm13 13v12h12v-12h-12zm-13 13v12h12v-12H.5zm26 13v12h12v-12h-12zm13 13v12h12v-12h-12z'  stroke-width='1' stroke='none' fill='%23022841ff'/><path d='M26.5.5v12h12V.5h-12zm0 13v12h12v-12h-12zm13 13v12h12v-12h-12zm-39 13v12h12v-12H.5zm0 13v12h12v-12H.5z'  stroke-width='1' stroke='none' fill='%23034e7eff'/><path d='M13.5.5v12h12V.5h-12zm39 13v12h12v-12h-12zm-39 13v12h12v-12h-12zm39 0v12h12v-12h-12zm-26 26v12h12v-12h-12z'  stroke-width='1' stroke='none' fill='%230474baff'/><path d='M52.5.5v12h12V.5h-12zm-13 13v12h12v-12h-12zm0 26v12h12v-12h-12zm13 0v12h12v-12h-12zm-39 13v12h12v-12h-12z'  stroke-width='1' stroke='none' fill='%23022841ff'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+  }
+
+  .default-clip {
+    clip-path: polygon(20% 0, 100% 0, 100% 80%, 80% 100%, 0 100%, 0 20%);
   }
 }
