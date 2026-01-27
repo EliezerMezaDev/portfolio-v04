@@ -76,21 +76,18 @@ export default function Hero({ dict }: HeroProps) {
         >
           <motion.p
             variants={itemVariants}
-            className="font-mono font-semibold text-main text-lg xl:text-xl 2xl:text-2xl"
+            className="font-mono font-semibold text-main text-xl xl:text-2xl 2xl:text-3xl"
           >
             {hero.greeting}
           </motion.p>
 
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-light"
-          >
+          <motion.h1 variants={itemVariants} className="title --main">
             {personal_info.name}
           </motion.h1>
 
-          <motion.h2 variants={itemVariants} className="mb-16 text-end">
+          <motion.h2 variants={itemVariants} className="mb-16 self-end">
             <CodeEffect
-              className="md:text-2xl lg:text-3xl text-accent font-bold"
+              className="md:text-2xl lg:text-3xl xl:text-4xl text-accent font-bold"
               symbolClassName="text-light-4 font-mono"
             >
               {personal_info.role}

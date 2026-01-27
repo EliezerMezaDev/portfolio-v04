@@ -1,14 +1,21 @@
-import { getDictionary } from "@/lib/dictionary";
+import { getDictionary, getExperienceData } from "@/lib/dictionary";
 
 //? Sections
 import Hero from "@/components/home/Hero";
+import Experience from "@/components/home/Experience";
 
 export default async function Home() {
-  const dict = await getDictionary("es");
+  const LOCALE = "es";
+
+  const dict = await getDictionary(LOCALE);
+  const experienceData = await getExperienceData(LOCALE);
+
+  console.log(experienceData);
 
   return (
     <main className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth">
       <Hero dict={dict} />
+      <Experience dict={dict} data={experienceData} />
 
       {/* <Section>
         <h2 className="text-4xl font-bold mb-8">Proyectos Destacados</h2>

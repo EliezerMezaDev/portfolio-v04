@@ -15,7 +15,8 @@
   "hero": {
     "greeting": "Hi, I'm",
     "description": "{years} years of experience. {role} from {location}.",
-    "cta": "Explore my projects"
+    "cta_1": "Check my projects",
+    "cta_2": "Contact me"
   },
   "experience_section": {
     "title": "Experience",
