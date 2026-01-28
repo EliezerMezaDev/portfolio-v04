@@ -1,44 +1,34 @@
-import { getDictionary, getExperienceData } from "@/lib/dictionary";
+import {
+  getDictionary,
+  getExperienceData,
+  getProjectsData,
+} from "@/lib/dictionary";
 
 //? Sections
 import Hero from "@/components/home/Hero";
 import Experience from "@/components/home/Experience";
+import ProjectsPreview from "@/components/home/ProjectsPreview";
 
 export default async function Home() {
   const LOCALE = "es";
 
   const dict = await getDictionary(LOCALE);
   const experienceData = await getExperienceData(LOCALE);
+  const projectsData = await getProjectsData(LOCALE);
 
   console.log(experienceData);
 
   return (
-    <main className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+    <main className="relative min-h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+      <div className="absolute right-0 top-0 h-full w-full z-0 hidden md:block bg-hexagon-patter">
+        <div className="absolute inset-0 bg-linear-to-r from-base-dark/95 from-25% to-base-dark/75" />
+      </div>
+
       <Hero dict={dict} />
+
+      <ProjectsPreview dict={dict} projects={projectsData} />
+
       <Experience dict={dict} data={experienceData} />
-
-      {/* <Section>
-        <h2 className="text-4xl font-bold mb-8">Proyectos Destacados</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="h-64 bg-gray-200 rounded-lg">Proyecto A</div>
-          <div className="h-64 bg-gray-200 rounded-lg">Proyecto B</div>
-        </div>
-        <Link href="/projects" className="mt-8 underline">
-          Ver todos
-        </Link>
-      </Section>
-
-      <Section className="bg-base-dark">
-        <h2 className="text-4xl font-bold">Experiencia Reciente</h2>
-      </Section>
-
-      <Section>
-        <h2 className="text-4xl font-bold">Stack Tecnológico</h2>
-      </Section>
-
-      <Section className="bg-base-dark">
-        <h2 className="text-4xl font-bold">Trabajemos Juntos</h2>
-      </Section> */}
     </main>
   );
 }

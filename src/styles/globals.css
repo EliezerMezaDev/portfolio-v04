@@ -62,7 +62,7 @@
   }
 
   .title {
-    @apply text-4xl  text-light tracking-tight;
+    @apply text-3xl text-light tracking-tight;
 
     &.--main {
       @apply font-black md:text-6xl lg:text-7xl xl:text-8xl;
@@ -76,7 +76,7 @@
       @apply font-bold text-light-3;
     }
 
-    &.--tertiary {
+    &.--card {
       @apply font-bold text-light-3;
     }
   }

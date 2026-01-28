@@ -22,43 +22,15 @@ const itemVariants: any = {
   },
 };
 
-// ! USAR LUEGO
-// const FloatingRhombus = ({
-//   className,
-//   delay = 0,
-// }: {
-//   className?: string;
-//   delay?: number;
-// }) => (
-//   <motion.div
-//     className={`absolute z-20 bg-linear-to-br from-base-light to-main ${className}`}
-//     style={{
-//       clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)", // Forma de rombo
-//     }}
-//     animate={{
-//       y: [0, -10, 0], // Movimiento de flotación
-//       opacity: [1, 0.8, 1],
-//     }}
-//     transition={{
-//       duration: 10,
-//       repeat: Infinity,
-//       ease: "easeInOut",
-//       delay: 0,
-//     }}
-//   />
-// );
-
 export default function Hero({ dict }: HeroProps) {
   const { hero, personal_info } = dict;
 
   return (
     <Section
       id="home"
-      className="p-0 flex items-center justify-center overflow-hidden relative bg-base-dark"
+      className="p-0 flex items-center justify-center overflow-hidden relative "
     >
-      <div className="absolute right-0 top-0 h-full w-full z-0 hidden md:block bg-hexagon-patter">
-        <div className="absolute inset-0 bg-linear-to-r from-base-dark from-25% to-base-dark/75" />
-      </div>
+      
 
       <div className="relative z-20 container mx-auto px-6 md:px-12 h-full flex flex-col-reverse md:flex-row justify-center items-center gap-12 md:gap-16">
         <motion.div

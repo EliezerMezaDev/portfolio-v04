@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Briefcase } from "lucide-react";
 import Section from "@/components/ui/Section";
 import ExperienceItem from "./ExperienceItem";
-import type { Experience } from "@/lib/content";
+import type { Experience } from "@/lib/dictionary";
 import { getDictionary } from "@/lib/dictionary";
 
 type Dictionary = Awaited<ReturnType<typeof getDictionary>>;

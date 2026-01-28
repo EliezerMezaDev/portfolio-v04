@@ -17,14 +17,12 @@ import {
   Box,
   FileCode,
 } from "lucide-react";
-import type { Technology } from "@/lib/content";
+import type { Technology } from "@/lib/dictionary";
+import TechStackBadges from "../ui/TechStackBadges";
 
-// --- MAPEO DE ICONOS LUCIDE ---
-// Como Lucide no tiene logos de marcas, asignamos iconos semánticos
 const getLucideIcon = (iconString: string) => {
   const key = iconString.toLowerCase();
 
-  // Mobile
   if (
     key.includes("flutter") ||
     key.includes("ionic") ||
@@ -33,27 +31,21 @@ const getLucideIcon = (iconString: string) => {
   )
     return Smartphone;
 
-  // Frontend / Frameworks
   if (key.includes("react")) return Atom;
-  if (key.includes("next") || key.includes("astro")) return Zap; // Next/Astro son rápidos -> Rayo
+  if (key.includes("next") || key.includes("astro")) return Zap;
   if (key.includes("vue") || key.includes("angular")) return Layers;
 
-  // Lenguajes
   if (key.includes("typescript") || key.includes("javascript")) return FileCode;
 
-  // Backend / Server
   if (key.includes("node") || key.includes("bun") || key.includes("server"))
     return Server;
 
-  // Bases de datos
   if (key.includes("sql") || key.includes("base") || key.includes("mongo"))
     return Database;
 
-  // Estilos
   if (key.includes("tailwind") || key.includes("css") || key.includes("sass"))
     return Box;
 
-  // Fallback por defecto
   return Terminal;
 };
 
@@ -106,31 +98,11 @@ export default function ExperienceItem({
           <h4 className="text-xl text-light-3 font-medium">@{company}</h4>
         )}
 
-        <div className="prose mt-4 text-light-4 text-lg xl:text-xl">
+        <div className="prose mt-4 mb-4 text-light-4 text-lg xl:text-xl">
           <Markdown>{children}</Markdown>
         </div>
 
-        {techStack && techStack.length > 0 && (
-          <div className="mt-6 flex flex-wrap gap-2">
-            {techStack.map((tech) => {
-              const IconComponent = getLucideIcon(tech.icon);
-
-              return (
-                <div
-                  key={tech.name}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-md bg-base-dark border-2 border-base text-md font-mono font-bold text-light-4 hover:bg-base-light hover:border-base-light hover:text-light transition-all duration-300 select-none group/pill cursor-pointer"
-                >
-                  <IconComponent
-                    size={16}
-                    strokeWidth={2}
-                    className="text-light-4 group-hover/pill:text-light transition-colors"
-                  />
-                  <span>{tech.name}</span>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        <TechStackBadges tags={techStack} />
       </div>
     </motion.li>
   );
