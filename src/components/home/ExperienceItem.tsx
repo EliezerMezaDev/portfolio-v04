@@ -72,25 +72,23 @@ export default function ExperienceItem({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="flex items-start gap-x-4 md:gap-x-6 relative z-10"
+      className="flex items-start px-3 py-4 md:px-4 md:py-6  gap-x-4 relative z-10 bg-base-light/20 backdrop-blur-lg border-base/50 shadow-lg origin-top"
     >
-      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-main/30 border-2 border-main shrink-0 mt-1 z-10">
-        <div className="w-2.5 h-2.5 rounded-full bg-main" />
-      </div>
+      <div className="default-clip flex items-center justify-center w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 bg-linear-to-r from-main to-main-light shrink-0 mt-1 z-15" />
 
       <div className="grow pt-1">
-        <time className="block text-md font-mono font-bold text-main mb-2">
-          {date}
-        </time>
+        <time className="block text-md font-bold text-main mb-2">{date}</time>
 
-        <h3 className="title font-bold mb-2">{role}</h3>
+        <h3 className="mb-2 font-montserrat! text-xl lg:text-2xl font-black text-light tracking-tight">
+          {role}
+        </h3>
 
         {companyUrl ? (
           <Link
             href={companyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-lg xl:text-xl text-light-3 hover:text-accent transition-colors font-medium inline-block relative group"
+            className="text-md 2xl:text-lg text-light-3 hover:text-accent transition-colors font-medium inline-block relative group"
           >
             @{company}
           </Link>
@@ -98,7 +96,7 @@ export default function ExperienceItem({
           <h4 className="text-xl text-light-3 font-medium">@{company}</h4>
         )}
 
-        <div className="prose mt-4 mb-4 text-light-4 text-lg xl:text-xl">
+        <div className="prose mt-4 mb-4 text-light-4 text-md 2xltext-lg 3xl:text-xl">
           <Markdown>{children}</Markdown>
         </div>
 

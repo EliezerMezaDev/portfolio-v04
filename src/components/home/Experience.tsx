@@ -35,35 +35,27 @@ export default function ExperienceSection({
 
   return (
     <Section id="experience" className="min-h-screen h-auto py-24 md:py-32">
-      <div className="container mx-auto px-6 md:px-12 flex flex-col items-center">
-        <div className="flex items-center gap-4 mb-16 self-start md:self-center">
+      <div className="w-[90dvw] 2xl:w-[60dvw] mx-auto px-6 md:px-12 flex flex-col items-center">
+        <div className="flex items-center gap-4 mb-10 self-center">
           <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
             <Briefcase
               className="w-6 h-6 md:w-8 md:h-8 text-accent"
               strokeWidth={1.5}
             />
           </div>
-          <h2 className="title --secondary">
+          <h2 className="font-montserrat! text-4xl font-black text-light tracking-tight">
             {dict.experience_section.title}
           </h2>
         </div>
 
-        <div
-          ref={containerRef}
-          className="relative w-full container max-w-4xl mx-auto"
-        >
-          <motion.div
-            style={{ height }}
-            className="absolute left-3.75 md:left-3.75 top-2 w-0.5 bg-linear-to-b from-accent/50 to-transparent origin-top z-0"
-          />
-
+        <div ref={containerRef} className="relative w-full container mx-auto">
           {workExperience.length > 0 && (
             <div className="mb-16">
               <motion.h3
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="text-2xl font-black text-center mb-8 text-light-4 hidden md:block"
+                className="text-xl xl:text-2xl font-black text-center mb-8 text-light-4 hidden md:block"
               >
                 {dict.experience_section.work_title}
               </motion.h3>
@@ -90,7 +82,7 @@ export default function ExperienceSection({
               <motion.h3
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="text-2xl font-black text-center mb-8 text-light-4 hidden md:block"
+                className="text-xl xl:text-2xl font-black text-center mb-8 text-light-4 hidden md:block"
               >
                 {dict.experience_section.consulting_title}
               </motion.h3>

@@ -28,11 +28,9 @@ export default function Hero({ dict }: HeroProps) {
   return (
     <Section
       id="home"
-      className="p-0 flex items-center justify-center overflow-hidden relative "
+      className="p-0 flex items-center justify-between overflow-hidden relative "
     >
-      
-
-      <div className="relative z-20 container mx-auto px-6 md:px-12 h-full flex flex-col-reverse md:flex-row justify-center items-center gap-12 md:gap-16">
+      <div className="relative z-20 mx-auto h-full flex flex-col-reverse lg:flex-row items-start justify-between gap-16 md:gap-24">
         <motion.div
           variants={{
             hidden: { opacity: 0 },
@@ -44,23 +42,29 @@ export default function Hero({ dict }: HeroProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="w-fit flex flex-col items-center md:items-start text-center md:text-left"
+          className="w-fit flex flex-col items-center lg:items-start text-center lg:text-left"
         >
           <motion.p
             variants={itemVariants}
-            className="font-mono font-semibold text-main text-xl xl:text-2xl 2xl:text-3xl"
+            className="hidden md:flex font-semibold text-main text-xl xl:text-2xl 2xl:text-3xl"
           >
             {hero.greeting}
           </motion.p>
 
-          <motion.h1 variants={itemVariants} className="title --main">
+          <motion.h1
+            variants={itemVariants}
+            className="font-montserrat! text-4xl md:text-6xl lg:text-8xl font-black text-light tracking-tight"
+          >
             {personal_info.name}
           </motion.h1>
 
-          <motion.h2 variants={itemVariants} className="mb-16 self-end">
+          <motion.h2
+            variants={itemVariants}
+            className="max-md:mt-1 mb-8 md:mb-16"
+          >
             <CodeEffect
-              className="md:text-2xl lg:text-3xl xl:text-4xl text-accent font-bold"
-              symbolClassName="text-light-4 font-mono"
+              className="text-xl md:text-3xl text-accent font-medium"
+              symbolClassName="text-light-4"
             >
               {personal_info.role}
             </CodeEffect>
@@ -68,13 +72,13 @@ export default function Hero({ dict }: HeroProps) {
 
           <motion.div
             variants={itemVariants}
-            className="flex justify-end gap-2 md:justify-start"
+            className="flex flex-col md:flex-row justify-end gap-2 md:justify-start"
           >
-            <Link href="#projects" className="button">
-              {hero.cta_1}
-            </Link>
             <Link href="#projects" className="button --alt">
               {hero.cta_2}
+            </Link>
+            <Link href="#projects" className="button">
+              {hero.cta_1}
             </Link>
           </motion.div>
         </motion.div>
@@ -86,8 +90,8 @@ export default function Hero({ dict }: HeroProps) {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <div className="relative w-64 md:w-80 lg:w-96 xl:w-md aspect-square z-10">
-            <div className="relative w-full h-full bg-base border-2 border-base rounded-full overflow-hidden">
+          <div className="relative w-60 lg:w-80 xl:w-96 aspect-square z-10">
+            <div className="relative w-full h-full bg-linear-to-r from-accent-dark to-accent rounded-full overflow-hidden">
               <Image
                 src={personal_info.profile_image}
                 alt={personal_info.name}
@@ -97,9 +101,7 @@ export default function Hero({ dict }: HeroProps) {
                 className="object-cover"
               />
 
-              <div className="absolute inset-0 bg-base/30 mix-blend-overlay z-10" />
-
-              <div className="absolute inset-0 bg-linear-to-r from-base-dark/50 to-base-dark/25 z-10" />
+              <div className="absolute inset-0 bg-base/20 mix-blend-overlay z-10" />
             </div>
           </div>
         </motion.div>

@@ -33,6 +33,24 @@
     "title": "Proyectos destacados",
     "view_all_button": "Ver todos"
   },
+  "contact_section": {
+    "title": "Hablemos",
+    "description": "Estoy siempre abierto a discutir nuevos proyectos, ideas creativas o oportunidades para ser parte de tus visiones.",
+    "info": {
+      "location": "Ubicación",
+      "email": "Correo electrónico",
+      "phone": "Teléfono"
+    },
+    "form": {
+      "name": "Nombre",
+      "name_placeholder": "Tu nombre",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "message": "Mensaje",
+      "message_placeholder": "Hablame de tu proyecto",
+      "submit": "Enviar mensaje"
+    }
+  },
   "about_page": {
     "title": "Sobre mí",
     "paragraph_1": "Desarrollador Full-Stack con la misión de construir software funcional y elegante...",

@@ -51,7 +51,7 @@ export default function TechBadges({ tags }: { tags: Technology[] }) {
         return (
           <div
             key={tech.name}
-            className="flex items-center gap-1.5 px-4 py-2 bg-base-light text-md font-mono font-medium text-light select-none group/pill"
+            className="flex items-center gap-1.5 px-3 py-2 bg-base-light text-md font-medium text-light select-none group/pill"
           >
             <IconComponent
               size={18}

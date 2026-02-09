@@ -17,14 +17,14 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+    <div className="hidden md:fixed left-4 top-1/2 -translate-y-1/2  z-50">
       <motion.nav
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5, type: "spring", stiffness: 260, damping: 20 }}
         className={cn(
-          "flex items-center gap-2  rounded-full",
-          "bg-light-4/5 backdrop-blur-xl border border-base",
+          "flex flex-col items-center gap-4 ",
+          " bg-base-light/25 backdrop-blur-xl ",
         )}
       >
         {navItems.map((item) => {
@@ -49,27 +49,25 @@ export default function Navbar() {
               href={item.href}
               onClick={handleClick}
               className={cn(
-                isActive ? "px-4" : "px-2",
-                "relative  py-2 rounded-full transition-colors group",
+                isActive ? "" : "",
+                "relative py-4 px-4 transition-colors group",
               )}
               aria-label={item.name}
             >
               {isActive && (
                 <motion.div
                   layoutId="active-nav-pill"
-                  className="absolute inset-0 px-4 bg-accent  rounded-full"
+                  className="absolute inset-0 px-4 bg-accent"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
 
               <span className="relative z-10 flex items-center justify-center">
                 <item.icon
-                  size={22}
-                  strokeWidth={2}
                   className={cn(
-                    "transition-colors duration-200",
+                    "size-4 xl:size-6 transition-colors duration-200",
                     isActive
-                      ? "text-base-dark"
+                      ? "text-base-darken"
                       : "text-light-4 group-hover:text-accent/50",
                   )}
                 />

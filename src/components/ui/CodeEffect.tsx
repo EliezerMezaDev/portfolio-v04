@@ -20,7 +20,7 @@ export const CodeEffect = ({
   return (
     <span
       className={cn(
-        "inline-flex items-center font-mono tracking-tighter",
+        "inline-flex items-center tracking-wide",
         className,
       )}
     >
@@ -31,7 +31,7 @@ export const CodeEffect = ({
         &lt;
       </span>
 
-      <span>{formattedText}</span>
+      {formattedText}
 
       <span
         className={cn("select-none ml-0.5", symbolClassName)}

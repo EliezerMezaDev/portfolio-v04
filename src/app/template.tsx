@@ -20,7 +20,7 @@ const getRouteName = (path: string) => {
 const DURATION = 1.5;
 const ANIAMTION_UNIT = 0.1;
 
-const COLUMNS = 10;
+const COLUMNS = 4;
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -29,13 +29,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       key={pathname}
-      className="min-h-screen max-h-screen bg-base-dark"
+      className="min-h-screen max-h-screen bg-base-darken"
     >
       <div className="fixed inset-0 z-100 flex pointer-events-none">
         {[...Array(COLUMNS)].map((_, i) => (
           <motion.div
             key={i}
-            className="w-1/4 h-full bg-base  relative"
+            className="w-1/4 h-full bg-base relative"
             initial={{ scaleY: 1 }}
             animate={{ scaleY: 0 }}
             exit={{ scaleY: 0 }}
@@ -50,7 +50,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       </div>
 
       <motion.div
-        className="fixed inset-0 z-101 flex items-center justify-center pointer-events-none overflow-hidden"
+        className="fixed inset-0 z-101 bg-base-darken flex items-center justify-center pointer-events-none overflow-hidden"
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
         transition={{
@@ -58,13 +58,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
           duration: DURATION - ANIAMTION_UNIT * 6,
         }}
       >
-        <h1 className="text-7xl font-extrabold text-light/80 tracking-tighter opacity-50">
+        <h1 className="text-7xl font-extrabold text-light-4 tracking-wide opacity-50">
           {routeName}
         </h1>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 60 }}
+        initial={{ opacity: 0, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: ANIAMTION_UNIT * 4, duration: DURATION }}
       >

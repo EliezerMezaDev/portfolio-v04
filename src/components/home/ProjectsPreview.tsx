@@ -22,25 +22,32 @@ export default function ProjectsPreview({
   const featuredProjects = projects.filter((p) => p.isFeatured).slice(0, 3);
 
   return (
-    <Section id="projects" className="min-h-screen h-auto py-24 md:py-32">
-      <div className="container mx-auto px-6 md:px-12 flex flex-col items-center">
-        <div className="flex items-center gap-4 mb-16 self-start md:self-center">
-          <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
+    <Section
+      id="projects"
+      className="min-h-screen h-auto py-12 md:py-24 lg:py-32"
+    >
+      <div className="container w-[90dvw] mx-auto px-6 md:px-12 flex flex-col items-center">
+        <div className="flex items-center gap-4 mb-10 self-center">
+          <div className="p-2 md:p-3 rounded-xl bg-accent/10 border border-accent/20">
             <Code2
-              className="w-6 h-6 md:w-8 md:h-8 text-accent"
+              className="sm:w-6 sm:h-6 md:w-8 md:h-8 text-accent"
               strokeWidth={1.5}
             />
           </div>
 
-          <h2 className="title --secondary">{dict.projects_section.title}</h2>
+          <h2 className="font-montserrat! text-xl sm:text-3xl md:text-4xl font-black text-light tracking-tight">
+            {dict.projects_section.title}
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {featuredProjects.map((project) => (
-            <div key={project.slug}>
-              <ProjectCard project={project} />
-            </div>
-          ))}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-10">
+          {[...featuredProjects, ...featuredProjects, ...featuredProjects].map(
+            (project) => (
+              <div key={project.slug}>
+                <ProjectCard project={project} />
+              </div>
+            ),
+          )}
         </div>
 
         <motion.div

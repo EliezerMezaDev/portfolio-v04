@@ -33,6 +33,23 @@
     "title": "Featured projects",
     "view_all_button": "View all"
   },
+  "contact_section": {
+    "title": "Get in touch",
+    "description": "I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.",
+    "info": {
+      "location": "Location",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "form": {
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "phone": "Phone number",
+      "message": "Message",
+      "submit": "Send message"
+    }
+  },
   "about_page": {
     "title": "About me",
     "paragraph_1": "Full-Stack Developer on a mission to build functional and elegant software...",

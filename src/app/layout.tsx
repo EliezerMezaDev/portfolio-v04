@@ -1,20 +1,24 @@
-import { Red_Hat_Display, Red_Hat_Text } from "next/font/google";
+import {
+  Montserrat,
+  Poppins,
+} from "next/font/google";
 
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 
 import Navbar from "@/components/layout/Navbar";
 
-const redHatDisplay = Red_Hat_Display({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
-const redHatText = Red_Hat_Text({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-poppins",
   display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -30,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${redHatDisplay.variable} ${redHatText.variable} antialiased`}
+        className={`${montserrat.variable} ${poppins.variable} antialiased`}
         suppressHydrationWarning
       >
         <Navbar />
