@@ -1,0 +1,37 @@
+{
+  "Projects": [
+    {
+      "show": true,
+      "title": "Example",
+      "desc": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
+      ],
+      "year": "2025",
+      "preview": "https://www.example.me",
+      "code": "https://www.example.me",
+      "thumbnail": "/placeholder.jpg",
+      "images": [
+        "/placeholder.jpg",
+        "/placeholder.jpg",
+        "/placeholder.jpg",
+        "/placeholder.jpg",
+        "/placeholder.jpg"
+      ],
+      "tech": [
+        "NextJS",
+        "Typescript",
+        "Shadcn UI",
+        "Tailwind CSS",
+        "Prisma",
+        "MySQL"
+      ],
+      "slug": "example",
+      "category": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

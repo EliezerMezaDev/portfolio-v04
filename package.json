@@ -1,26 +1,57 @@
 {
-  "name": "portfolio-v04",
-  "version": "0.1.0",
+  "name": "eliezer-a-meza-portfolio-v05",
+  "author": {
+    "name": "Eliezer A Meza",
+    "email": "eliezermeza.dev@gmail.com"
+  },
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "generate-sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
-    "next": "16.1.4",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "@alvalens/react-fullpage-snap": "^1.0.2",
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/free-regular-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@fortawesome/react-fontawesome": "^3.3.1",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@vercel/analytics": "^2.0.1",
+    "clsx": "^2.1.1",
+    "eslint": "10.2.1",
+    "eslint-config-next": "16.2.4",
+    "framer-motion": "^12.38.0",
+    "next": "16.2.4",
+    "nprogress": "^0.2.0",
+    "postcss": "^8.5.10",
+    "prop-types": "^15.8.1",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "sharp": "^0.34.5",
+    "sitemap": "^9.0.1",
+    "swr": "^2.4.1",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.4",
-    "tailwindcss": "^4",
+    "@next/bundle-analyzer": "16.2.4",
+    "@types/node": "^25",
+    "@types/prop-types": "^15.7.15",
+    "@types/react": "19.2.14",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "@typescript-eslint/parser": "^8.54.0",
+      "@typescript-eslint/eslint-plugin": "^8.54.0",
+      "@typescript-eslint/type-utils": "^8.54.0",
+      "@typescript-eslint/utils": "^8.54.0",
+      "@typescript-eslint/typescript-estree": "^8.54.0"
+    }
   }
 }
