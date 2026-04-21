@@ -1,20 +1,38 @@
-import Section from "@/components/ui/Section";
+"use client";
+import { useEffect } from "react";
+import FixedButton from "@components/ui/FixedButton";
 
-export default function About() {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
+import About from "@components/about/about/about";
+import Skills from "@components/about/skills/skills";
+import Experience from "@components/about/experience";
+import Education from "@components/about/education";
+
+
+export default function AboutPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <main className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-      <Section>
-        <h1 className="text-5xl font-bold">Sobre Mí</h1>
-        <p className="mt-4 text-lg">Más allá del código.</p>
-      </Section>
+    <>
+      <main className="overflow-hidden">
+        <FixedButton href="/#about">
+          <FontAwesomeIcon icon={faChevronLeft} className="text-black pr-10" />
+        </FixedButton>
 
-      <Section>
-        <h2 className="text-4xl font-bold">Formación Académica</h2>
-      </Section>
+        <div className="h-10" />
 
-      <Section>
-        <h2 className="text-4xl font-bold">Contacto</h2>
-      </Section>
-    </main>
+        <About />
+
+        <Skills />
+
+        <Experience />
+
+        <Education />
+      </main>
+    </>
   );
 }

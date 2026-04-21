@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@lib/utils";
 
 interface CodeEffectProps {
-  children: string;
+  children: React.ReactNode;
   className?: string;
   symbolClassName?: string;
 }
@@ -11,30 +11,19 @@ export const CodeEffect = ({
   className,
   symbolClassName = "opacity-50",
 }: CodeEffectProps) => {
-  const formattedText = children
-    .trim()
-    .split(/\s+/)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join("");
-
   return (
-    <span
-      className={cn(
-        "inline-flex items-center tracking-wide",
-        className,
-      )}
-    >
+    <span className={cn("inline-flex items-center tracking-wide", className)}>
       <span
-        className={cn("select-none mr-px", symbolClassName)}
+        className={cn("select-none", symbolClassName)}
         aria-hidden="true"
       >
         &lt;
       </span>
 
-      {formattedText}
+      {children}
 
       <span
-        className={cn("select-none ml-0.5", symbolClassName)}
+        className={cn("select-none ml-1.5", symbolClassName)}
         aria-hidden="true"
       >
         /&gt;
