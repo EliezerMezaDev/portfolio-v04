@@ -1,43 +1,43 @@
-"use client";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+"use client"
+import { useEffect, useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 
-import FixedButton from "@components/ui/FixedButton";
+import FixedButton from "@components/ui/FixedButton"
 
-import Portrait from "@public/image/portrait-long.jpg";
+import Portrait from "@public/image/portrait-long.jpg"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 
-import Me from "@components/about/Me";
-import Skills from "@components/about/Skills";
-import Experience from "@components/about/Experience";
-import Education from "@components/about/Education";
-import Hero from "@components/ui/Hero";
-import { useFullPage } from "@alvalens/react-fullpage-snap";
+import Me from "@components/about/Me"
+import Skills from "@components/about/Skills"
+import Experience from "@components/about/Experience"
+import Education from "@components/about/Education"
+import Hero from "@components/ui/Hero"
+import { useFullPage } from "@alvalens/react-fullpage-snap"
 
 const ScrollIndicator = () => {
-  const { activeIndex } = useFullPage();
-  const [dismissed, setDismissed] = useState(false);
+  const { activeIndex } = useFullPage()
+  const [dismissed, setDismissed] = useState(false)
 
   useEffect(() => {
-    if (activeIndex !== 0) setDismissed(true);
-  }, [activeIndex]);
+    if (activeIndex !== 0) setDismissed(true)
+  }, [activeIndex])
 
   return (
     <AnimatePresence>
       {activeIndex === 0 && !dismissed && (
         <motion.div
-          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3"
+          className="fixed bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.6, delay: 1.2 } }}
           exit={{ opacity: 0, transition: { duration: 0.4 } }}
         >
-          <span className="text-[10px] uppercase tracking-[4px] text-light-4 font-medium">
+          <span className="text-[10px] font-medium tracking-[4px] text-light-5 uppercase">
             Scroll
           </span>
           <motion.div
-            className="w-[1.5px] h-14 bg-accent origin-top"
+            className="bg-accent h-14 w-[1.5px] origin-top"
             animate={{
               scaleY: [0, 1, 1],
               opacity: [0, 1, 0],
@@ -52,19 +52,19 @@ const ScrollIndicator = () => {
         </motion.div>
       )}
     </AnimatePresence>
-  );
-};
+  )
+}
 
 export default function AboutPage() {
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <>
       <main className="overflow-hidden">
         <FixedButton href="/#about">
-          <FontAwesomeIcon icon={faChevronLeft} className="text-black pr-10" />
+          <FontAwesomeIcon icon={faChevronLeft} className="pr-10 text-black" />
         </FixedButton>
 
         <Hero
@@ -73,9 +73,9 @@ export default function AboutPage() {
           coverImg={Portrait}
         />
 
-        <div className="mx-auto container gap-10 grid grid-cols-1 my-10">
+        <div className="container mx-auto my-10 grid grid-cols-1 gap-10">
           <motion.div
-            className="flex justify-center items-start flex-col mb-5"
+            className="mb-5 flex flex-col items-start justify-center"
             initial={{
               opacity: 0,
               y: 50,
@@ -102,5 +102,5 @@ export default function AboutPage() {
         </div>
       </main>
     </>
-  );
+  )
 }

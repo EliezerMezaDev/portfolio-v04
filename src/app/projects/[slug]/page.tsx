@@ -1,27 +1,35 @@
-"use client";
-import { useState, useEffect, use, useCallback } from "react";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import jsonData from "@data/projects.json";
+"use client"
+import { useState, useEffect, use, useCallback } from "react"
+import { useRouter } from "next/navigation"
+import { motion } from "framer-motion"
+import jsonData from "@data/projects.json"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import NotFound from "@app/not-found";
-import Image from "next/image";
-import BlurImage from "@public/image/placeholder/blur.jpg";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
+import NotFound from "@app/not-found"
+import Image from "next/image"
+import BlurImage from "@public/image/placeholder/blur.jpg"
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons"
 
-function ProjectImage({ src, alt, index }: { src: string; alt: string; index: number }) {
-  const [loaded, setLoaded] = useState(false);
-  const handleLoad = useCallback(() => setLoaded(true), []);
+function ProjectImage({
+  src,
+  alt,
+  index,
+}: {
+  src: string
+  alt: string
+  index: number
+}) {
+  const [loaded, setLoaded] = useState(false)
+  const handleLoad = useCallback(() => setLoaded(true), [])
 
   return (
-    <div className="relative mb-5 max-w-7xl mx-auto w-full">
+    <div className="relative mx-auto mb-5 w-full max-w-7xl">
       {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-neutral-300 rounded" />
+        <div className="absolute inset-0 animate-pulse rounded bg-neutral-300" />
       )}
       <Image
         src={src}
@@ -35,114 +43,114 @@ function ProjectImage({ src, alt, index }: { src: string; alt: string; index: nu
         onLoad={handleLoad}
       />
     </div>
-  );
+  )
 }
 
 function ScrollDownButton() {
-  const [isAtBottom, setIsAtBottom] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false)
 
   const handleScroll = () => {
     const scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
+      document.documentElement.scrollTop || document.body.scrollTop
     if (
       scrollTop <
       document.documentElement.scrollHeight -
-      document.documentElement.clientHeight
+        document.documentElement.clientHeight
     ) {
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: "smooth",
-      });
-      setIsAtBottom(true);
+      })
+      setIsAtBottom(true)
     } else {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
-      });
-      setIsAtBottom(false);
+      })
+      setIsAtBottom(false)
     }
-  };
+  }
 
   return (
-    <div className="fixed bottom-5 left-0 right-0 flex justify-center items-center mb-10">
+    <div className="fixed right-0 bottom-5 left-0 mb-10 flex items-center justify-center">
       <motion.div
-        className="h-10 w-10 bg-neutral-900 rounded-full flex justify-center items-center cursor-pointer"
+        className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-900"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={handleScroll}
       >
         <FontAwesomeIcon
           icon={isAtBottom ? faChevronUp : faChevronDown}
-          className="text-white text-2xl"
+          className="text-2xl text-white"
         />
       </motion.div>
     </div>
-  );
+  )
 }
 
 function Page(props: { params: Promise<{ slug: string }> }) {
-  const params = use(props.params);
-  const router = useRouter();
-  const [data, setData] = useState<any>(null);
+  const params = use(props.params)
+  const router = useRouter()
+  const [data, setData] = useState<any>(null)
 
   useEffect(() => {
     const selectedData = jsonData.Projects.find(
-      (item) => item.slug === params.slug,
-    );
+      (item) => item.slug === params.slug
+    )
     if (selectedData === undefined) {
-      setData("404");
+      setData("404")
     } else {
-      setData(selectedData);
+      setData(selectedData)
     }
-  }, [params.slug]);
+  }, [params.slug])
 
   if (data === "404") {
     return (
       <>
         <NotFound />
       </>
-    );
+    )
   } else if (!data) {
     return (
-      <div className="relative min-h-screen w-full  gap-4 p-10 flex justify-center items-center flex-col mb-10 ">
-        <div className="min-h-screen flex justify-center items-center w-full">
-          <div className="mx-auto grid grid-cols-1 md:grid-cols-2  w-full">
-            <div className="flex justify-center items-start flex-col mb-5 space-y-10 w-ful p-4">
-              <div className="animate-pulse bg-neutral-400 h-20 w-full rounded shadow-lg"></div>
-              <div className="animate-pulse bg-neutral-400 h-20 w-full rounded shadow-lg"></div>
-              <div className="animate-pulse bg-neutral-400 h-20 w-full rounded shadow-lg"></div>
-              <div className="animate-pulse bg-neutral-400 h-20 w-full rounded shadow-lg"></div>
-              <div className="animate-pulse bg-neutral-400 h-20 w-full rounded shadow-lg"></div>
+      <div className="relative mb-10 flex min-h-screen w-full flex-col items-center justify-center gap-4 p-10">
+        <div className="flex min-h-screen w-full items-center justify-center">
+          <div className="mx-auto grid w-full grid-cols-1 md:grid-cols-2">
+            <div className="w-ful mb-5 flex flex-col items-start justify-center space-y-10 p-4">
+              <div className="h-20 w-full animate-pulse rounded bg-neutral-400 shadow-lg"></div>
+              <div className="h-20 w-full animate-pulse rounded bg-neutral-400 shadow-lg"></div>
+              <div className="h-20 w-full animate-pulse rounded bg-neutral-400 shadow-lg"></div>
+              <div className="h-20 w-full animate-pulse rounded bg-neutral-400 shadow-lg"></div>
+              <div className="h-20 w-full animate-pulse rounded bg-neutral-400 shadow-lg"></div>
             </div>
-            <div className="flex justify-start items-start flex-col mb-5 w-full p-4">
-              <div className="animate-pulse duration-500 shadow-lg bg-neutral-400 rounded  w-full h-full "></div>
+            <div className="mb-5 flex w-full flex-col items-start justify-start p-4">
+              <div className="h-full w-full animate-pulse rounded bg-neutral-400 shadow-lg duration-500"></div>
             </div>
           </div>
         </div>
         {/* images */}
-        <div className="mx-auto grid grid-cols-1 p-5 md:p-20  w-full h-auto">
-          <div className="w-full h-auto aspect-video">
-            <div className="animate-pulse duration-500 shadow-lg bg-neutral-400 h-full w-full rounded"></div>
+        <div className="mx-auto grid h-auto w-full grid-cols-1 p-5 md:p-20">
+          <div className="aspect-video h-auto w-full">
+            <div className="h-full w-full animate-pulse rounded bg-neutral-400 shadow-lg duration-500"></div>
           </div>
         </div>
       </div>
-    );
+    )
   }
   return (
-    <div className="relative min-h-screen w-full gap-4 p-10 flex justify-center items-center flex-col mb-10 ">
+    <div className="relative mb-10 flex min-h-screen w-full flex-col items-center justify-center gap-4 p-10">
       <button
         onClick={() => router.back()}
-        className="fixed top-2 -left-2 md:left-10 flex justify-center items-center rounded-full p-4 transition duration-300 ease-in-out z-50"
+        className="fixed top-2 -left-2 z-50 flex items-center justify-center rounded-full p-4 transition duration-300 ease-in-out md:left-10"
         aria-label="Go back"
       >
-        <FontAwesomeIcon icon={faChevronLeft} className="text-black pr-10" />
+        <FontAwesomeIcon icon={faChevronLeft} className="pr-10 text-black" />
       </button>
       <ScrollDownButton />
-      <div className="min-h-screen flex justify-center items-center">
-        <div className="mx-auto grid grid-cols-1 md:grid-cols-2  mt-10 md:mt-0">
-          <div className="min-h-screen sm:min-h-0 flex justify-center items-start flex-col mb-5 space-y-10 mx-auto">
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="mx-auto mt-10 grid grid-cols-1 md:mt-0 md:grid-cols-2">
+          <div className="mx-auto mb-5 flex min-h-screen flex-col items-start justify-center space-y-10 sm:min-h-0">
             <div>
-              <h2 className="uppercase font-normal text-lg tracking-[8px] text-neutral-400">
+              <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
                 Project
               </h2>
               <h1 className="text-4xl font-medium text-neutral-900">
@@ -150,7 +158,7 @@ function Page(props: { params: Promise<{ slug: string }> }) {
               </h1>
             </div>
             <div>
-              <h2 className="uppercase font-normal text-lg tracking-[8px] text-neutral-400">
+              <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
                 Technology
               </h2>
               <p className="text-2xl font-normal text-neutral-900">
@@ -158,7 +166,7 @@ function Page(props: { params: Promise<{ slug: string }> }) {
               </p>
             </div>
             <div>
-              <h2 className="uppercase font-normal text-lg tracking-[8px] text-neutral-400">
+              <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
                 Year
               </h2>
               <p className="text-2xl font-normal text-neutral-900">
@@ -167,7 +175,7 @@ function Page(props: { params: Promise<{ slug: string }> }) {
             </div>
             {data.preview && (
               <div>
-                <h2 className="uppercase font-normal text-lg tracking-[8px] text-neutral-400">
+                <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
                   Preview
                 </h2>
                 <p className="text-2xl font-normal text-neutral-900">
@@ -187,7 +195,7 @@ function Page(props: { params: Promise<{ slug: string }> }) {
             )}
             {data.code && (
               <div>
-                <h2 className="uppercase font-normal text-lg tracking-[8px] text-neutral-400">
+                <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
                   Source Code
                 </h2>
                 <p className="text-2xl font-normal text-neutral-900">
@@ -198,14 +206,14 @@ function Page(props: { params: Promise<{ slug: string }> }) {
               </div>
             )}
           </div>
-          <div className="flex justify-start items-start flex-col mb-5 ">
-            <h2 className="uppercase font-normal text-lg tracking-[8px] text-neutral-400">
+          <div className="mb-5 flex flex-col items-start justify-start">
+            <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
               Description
             </h2>
             {data.desc.map((desc: string, index: number) => (
               <p
                 key={index}
-                className="text-xl text-justify tracking-wide font-normal text-light-4 mb-5"
+                className="mb-5 text-justify text-xl font-normal tracking-wide text-light-5"
               >
                 {desc}
               </p>
@@ -214,8 +222,8 @@ function Page(props: { params: Promise<{ slug: string }> }) {
         </div>
       </div>
       {/* images */}
-      <div className="mx-auto grid grid-cols-1 p-5 md:p-20 w-full">
-        <div className="w-full h-auto text-center flex flex-col justify-center ">
+      <div className="mx-auto grid w-full grid-cols-1 p-5 md:p-20">
+        <div className="flex h-auto w-full flex-col justify-center text-center">
           {data.images.map((image: string, index: number) => (
             <ProjectImage
               key={index}
@@ -227,7 +235,7 @@ function Page(props: { params: Promise<{ slug: string }> }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Page;
+export default Page

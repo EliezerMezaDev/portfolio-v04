@@ -1,41 +1,41 @@
-"use client";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import Button from "@components/ui/Button";
-import Image from "next/image";
+"use client"
+import { useEffect, useState } from "react"
+import Link from "next/link"
+import { motion } from "framer-motion"
+import Button from "@components/ui/Button"
+import Image from "next/image"
 
 // images
-import ProjectAll from "@public/image/projects.png";
+import ProjectAll from "@public/image/projects.png"
 
-import Hr from "@components/ui/Hr";
-import ProjectCard from "./components/ProjectCard";
-import Projects from "@data/projects.json";
-import FixedButon from "@components/ui/FixedButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import Hightlight from "@components/projects/Hightlight";
-import { CodeEffect } from "@components/ui/CodeEffect";
-import Hero from "@components/ui/Hero";
+import Hr from "@components/ui/Hr"
+import ProjectCard from "./components/ProjectCard"
+import Projects from "@data/projects.json"
+import FixedButon from "@components/ui/FixedButton"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
+import Hightlight from "@components/projects/Hightlight"
+import { CodeEffect } from "@components/ui/CodeEffect"
+import Hero from "@components/ui/Hero"
 
 const categories = [
   { id: 1, label: "Desarrollo Web" },
   { id: 2, label: "Mobile" },
   { id: 3, label: "Otro" },
-];
+]
 
 export default function Page() {
-  const [activeCategory, setActiveCategory] = useState(1);
-  const projects = Projects.Projects.filter((item) => item.show === true);
+  const [activeCategory, setActiveCategory] = useState(1)
+  const projects = Projects.Projects.filter((item) => item.show === true)
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <main className="overflow-hidden">
         <FixedButon href="/#projects">
-          <FontAwesomeIcon icon={faChevronLeft} className="text-black pr-10" />
+          <FontAwesomeIcon icon={faChevronLeft} className="pr-10 text-black" />
         </FixedButon>
 
         <Hero
@@ -46,11 +46,11 @@ export default function Page() {
 
         <Hightlight />
 
-        <div className="mt-16 flex flex-col justify-start items-center w-full pl-10 md:pl-32">
-          <div className="flex justify-center items-center flex-col my-5 self-start">
+        <div className="mt-16 flex w-full flex-col items-center justify-start pl-10 md:pl-32">
+          <div className="my-5 flex flex-col items-center justify-center self-start">
             <Hr variant="long"></Hr>
             <motion.h1
-              className="text-3xl font-bold mt-3"
+              className="mt-3 text-3xl font-bold"
               initial={{
                 opacity: 0,
                 x: -200,
@@ -82,12 +82,12 @@ export default function Page() {
           transition={{
             type: "spring",
           }}
-          className="flex flex-row justify-center items-start flex-wrap gap-3 md:gap-5 my-5 "
+          className="my-5 flex flex-row flex-wrap items-start justify-center gap-3 md:gap-5"
         >
           {categories.map((category, index) => (
             <button
               key={index}
-              className={`px-2 md:px-4 py-2 rounded-lg cursor-pointer transition-all ease duration-300 focus:bg-gray-300 focus:text-black focus:ring focus:ring-slate-500 ${
+              className={`ease cursor-pointer rounded-lg px-2 py-2 transition-all duration-300 focus:bg-gray-300 focus:text-black focus:ring focus:ring-slate-500 md:px-4 ${
                 activeCategory === category.id
                   ? "bg-gray-300 text-black hover:bg-gray-700 hover:text-white"
                   : "bg-gray-700 text-white hover:bg-gray-300 hover:text-black"
@@ -100,7 +100,7 @@ export default function Page() {
         </motion.div>
 
         {/* projects */}
-        <div className="w-screen mx-auto container gap-4 px-10 grid grid-cols-1 md:grid-cols-2 mb-10 cursor-pointer">
+        <div className="container mx-auto mb-10 grid w-screen cursor-pointer grid-cols-1 gap-4 px-10 md:grid-cols-2">
           {projects.map((project, index) => (
             <ProjectCard
               index={index}
@@ -119,7 +119,7 @@ export default function Page() {
           whileInView={{
             opacity: 1,
           }}
-          className="flex justify-center items-center flex-col my-5 self-start "
+          className="my-5 flex flex-col items-center justify-center self-start"
         >
           <Button variation="primary">
             <Link href="projects/archive">Ver en el archivo</Link>
@@ -127,5 +127,5 @@ export default function Page() {
         </motion.div>
       </main>
     </>
-  );
+  )
 }

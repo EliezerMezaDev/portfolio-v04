@@ -1,26 +1,26 @@
-"use client";
-import { motion } from "framer-motion";
+"use client"
+import { motion } from "framer-motion"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import FixedButon from "@components/ui/FixedButton";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import Projects from "@data/projects.json";
-import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
+import FixedButon from "@components/ui/FixedButton"
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
+import Projects from "@data/projects.json"
+import Link from "next/link"
 
 export default function Page() {
-  const projects = Projects.Projects;
+  const projects = Projects.Projects
   return (
     <>
       <main className="overflow-hidden">
         <FixedButon href="/projects">
-          <FontAwesomeIcon icon={faChevronLeft} className="text-black pr-10" />
+          <FontAwesomeIcon icon={faChevronLeft} className="pr-10 text-black" />
         </FixedButon>
-        <div className="min-h-screen w-screen mt-10 md:mt-0  p-10 flex justify-center items-center flex-col mb-10">
-          <div className="flex justify-center items-center flex-col my-5 self-start ">
+        <div className="mt-10 mb-10 flex min-h-screen w-screen flex-col items-center justify-center p-10 md:mt-0">
+          <div className="my-5 flex flex-col items-center justify-center self-start">
             <motion.div
-              className="bg-gray-700 w-28 h-1 rounded-full mb-3 self-start"
+              className="mb-3 h-1 w-28 self-start rounded-full bg-gray-700"
               initial={{
                 opacity: 0,
                 x: -250,
@@ -36,7 +36,7 @@ export default function Page() {
               }}
             ></motion.div>
             <motion.div
-              className="bg-gray-700 w-28 h-1 rounded-full"
+              className="h-1 w-28 rounded-full bg-gray-700"
               initial={{
                 opacity: 0,
                 x: 200,
@@ -52,7 +52,7 @@ export default function Page() {
               }}
             ></motion.div>
             <motion.h1
-              className="text-3xl font-bold mt-3"
+              className="mt-3 text-3xl font-bold"
               initial={{
                 opacity: 0,
                 x: -200,
@@ -71,11 +71,11 @@ export default function Page() {
             </motion.h1>
           </div>
 
-          <div className="mx-auto container md:px-10 grid grid-cols-1 mb-">
+          <div className="mb- container mx-auto grid grid-cols-1 md:px-10">
             {/* invisible table */}
             <table className="space-y-3">
               <thead>
-                <tr className=" hover:shadow-md  transition-all ease duration-500">
+                <tr className="ease transition-all duration-500 hover:shadow-md">
                   <th className="text-start">Year</th>
                   <th className="text-start">Title</th>
                   <th className="text-start">Technology</th>
@@ -86,7 +86,7 @@ export default function Page() {
                 {projects.map((project, index) => (
                   <tr
                     key={index}
-                    className="hover:shadow-md transition-all ease duration-500"
+                    className="ease transition-all duration-500 hover:shadow-md"
                   >
                     <td>{project.year}</td>
                     <td>
@@ -96,12 +96,12 @@ export default function Page() {
                     </td>
                     <td>{project.tech.map((t) => `${t}, `)}</td>
                     <td>
-                      <div className="flex flex-row justify-center items-center">
+                      <div className="flex flex-row items-center justify-center">
                         {project.code && (
                           <a href={project.code} title="Link to GitHub">
                             <FontAwesomeIcon
                               icon={faGithub}
-                              className="text-xl mr-2"
+                              className="mr-2 text-xl"
                             />
                           </a>
                         )}
@@ -126,5 +126,5 @@ export default function Page() {
         </div>
       </main>
     </>
-  );
+  )
 }

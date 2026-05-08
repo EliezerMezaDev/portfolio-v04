@@ -1,53 +1,52 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { useState, useEffect } from "react"
+import Image, { StaticImageData } from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 import {
   FullPageWrapper,
   Section,
   useFullPage,
-} from "@alvalens/react-fullpage-snap";
+} from "@alvalens/react-fullpage-snap"
 
 // components
-import Button from "@components/ui/Button";
-import Me from "@public/image/portrait-long.jpg";
-import MeAbout from "@public/image/me1.jpg";
-import Setup from "@public/image/setup.jpg";
-import ProjectAll from "@public/image/projects.png";
-import Hr from "@components/ui/Hr";
+import Button from "@components/ui/Button"
+import Me from "@public/image/portrait-long.jpg"
+import MeAbout from "@public/image/me1.jpg"
+import Setup from "@public/image/setup.jpg"
+import ProjectAll from "@public/image/projects.png"
+import Hr from "@components/ui/Hr"
 
 // icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import {
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons"
 
 const ScrollIndicator = () => {
-  const { activeIndex } = useFullPage();
-  const [dismissed, setDismissed] = useState(false);
+  const { activeIndex } = useFullPage()
+  const [dismissed, setDismissed] = useState(false)
 
   useEffect(() => {
-    if (activeIndex !== 0) setDismissed(true);
-  }, [activeIndex]);
+    if (activeIndex !== 0) setDismissed(true)
+  }, [activeIndex])
 
   return (
     <AnimatePresence>
       {activeIndex === 0 && !dismissed && (
         <motion.div
-          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3"
+          className="fixed bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.6, delay: 1.2 } }}
           exit={{ opacity: 0, transition: { duration: 0.4 } }}
         >
-          <span className="text-[10px] uppercase tracking-[4px] text-light-4 font-medium">
+          <span className="text-[10px] font-medium tracking-[4px] text-light-5 uppercase">
             Scroll
           </span>
           <motion.div
-            className="w-[1.5px] h-14 bg-accent origin-top"
+            className="bg-accent h-14 w-[1.5px] origin-top"
             animate={{
               scaleY: [0, 1, 1],
               opacity: [0, 1, 0],
@@ -62,8 +61,8 @@ const ScrollIndicator = () => {
         </motion.div>
       )}
     </AnimatePresence>
-  );
-};
+  )
+}
 
 const PageContentSection = ({
   image,
@@ -71,17 +70,17 @@ const PageContentSection = ({
   buttons,
   content,
 }: {
-  image: StaticImageData;
-  title: string;
-  content: React.ReactNode;
-  buttons: React.ReactNode;
+  image: StaticImageData
+  title: string
+  content: React.ReactNode
+  buttons: React.ReactNode
 }) => {
   return (
     <Section>
-      <div className="relative md:h-screen w-screen gap-4 flex justify-center items-center flex-col overflow-hidden">
-        <div className="z-0 mb-48 md:mb-0  md:absolute md:top-1/2  md:right-[10%] md:-translate-y-1/2">
+      <div className="relative flex w-screen flex-col items-center justify-center gap-4 overflow-hidden md:h-screen">
+        <div className="z-0 mb-48 md:absolute md:top-1/2 md:right-[10%] md:mb-0 md:-translate-y-1/2">
           <motion.div
-            className="relative bg-light rounded-sm h-[400px] md:h-[60vh] w-[80vw] md:w-[30vw] grayscale hover:grayscale-0"
+            className="relative h-[400px] w-[80vw] rounded-sm bg-light grayscale hover:grayscale-0 md:h-[60vh] md:w-[30vw]"
             initial={{
               x: 300,
               opacity: 0,
@@ -109,9 +108,9 @@ const PageContentSection = ({
             />
           </motion.div>
         </div>
-        <div className="z-10 w-full absolute md:w-auto  md:left-[10%] top-[60%] md:top-1/3 col-span-2 flex flex-col justify-center items-start md:items-start text-start px-10 py-5">
+        <div className="absolute top-[60%] z-10 col-span-2 flex w-full flex-col items-start justify-center px-10 py-5 text-start md:top-1/3 md:left-[10%] md:w-auto md:items-start">
           <motion.h2
-            className="mb-2 text-5xl md:text-7xl lg:text-8xl bg-light lg:bg-transparent max-md:p-2 bg-opacity-50 text-main font-bold"
+            className="bg-opacity-50 mb-2 bg-light text-5xl font-bold text-main max-md:p-2 md:text-7xl lg:bg-transparent lg:text-8xl"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{
@@ -124,7 +123,7 @@ const PageContentSection = ({
 
           <Hr />
           <motion.p
-            className="title text-xl tracking-wider text-light-4 leading-[1.7rem] mt-2 lg:mt-4 mb-4 lg:mb-10"
+            className="title mt-2 mb-4 text-xl leading-[1.7rem] tracking-wider text-light-5 lg:mt-4 lg:mb-10"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{
@@ -147,37 +146,37 @@ const PageContentSection = ({
         </div>
       </div>
     </Section>
-  );
-};
+  )
+}
 
 export default function RootPage() {
   return (
     <>
       <FullPageWrapper>
         <Section>
-          <div className="w-[86%] max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 p-4 md:p-10 overflow-hidden">
+          <div className="grid w-[86%] max-w-screen-2xl grid-cols-1 gap-4 overflow-hidden p-4 md:grid-cols-3 md:p-10">
             <motion.div
-              className="col-span-2 flex flex-col justify-center items-center md:items-start text-center md:text-start"
+              className="col-span-2 flex flex-col items-center justify-center text-center md:items-start md:text-start"
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{
                 type: "spring",
               }}
             >
-              <div className="block md:hidden col-span-1 mx-auto my-10">
-                <div className="bg-slate-500 rounded-full h-60 w-60 transition-all ease duration-300 ">
+              <div className="col-span-1 mx-auto my-10 block md:hidden">
+                <div className="ease h-60 w-60 rounded-full bg-slate-500 transition-all duration-300">
                   <Image
                     src={Me}
                     width={500}
                     height={500}
-                    className="rounded-full w-full h-full object-cover"
+                    className="h-full w-full rounded-full object-cover"
                     alt="EaMZ"
                     placeholder="blur"
                   />
                 </div>
               </div>
               <motion.h3
-                className="uppercase text-xl mb-3 font-normal text tracking-[.5rem] text-light-4"
+                className="text mb-3 text-2xl font-normal tracking-[.5rem] text-dark uppercase"
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -189,7 +188,7 @@ export default function RootPage() {
               </motion.h3>
 
               <motion.h1
-                className="text-accent md:mb-2 text-5xl md:text-7xl lg:text-8xl font-bold "
+                className="text-5xl font-bold text-main md:mb-2 md:text-7xl lg:text-8xl"
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -197,11 +196,11 @@ export default function RootPage() {
                   type: "spring",
                 }}
               >
-                Eliezer A Meza{" "}
+                Frontend Engineer
               </motion.h1>
 
               <motion.p
-                className="title text-md 2xl:text-xl mt-4 tracking-wider text-light-4 leading-[1.7rem]"
+                className="title text-md mt-4 leading-[1.7rem] tracking-wider text-light-5 2xl:text-xl"
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -209,13 +208,13 @@ export default function RootPage() {
                   type: "spring",
                 }}
               >
-                +5 años desarrollando en entornos Fintech, construyendo
-                arquitecturas escalables basadas en Next.js, Flutter y Node.js.
-                Enfocado en optimizar el rendimiento y la seguridad en sistemas
-                transaccionales.
+                Ingeniero de Software Frontend con +5 años de experiencia
+                diseñando arquitecturas escalables y aplicaciones híbridas.
+                Especializado en el sector Fintech, enfocado en optimizar el
+                rendimiento y la seguridad en sistemas transaccionales.
               </motion.p>
               <motion.div
-                className="buttons flex flex-row justify-center items-center space-x-4 mt-4 lg:mt-10"
+                className="buttons mt-4 flex flex-row items-center justify-center space-x-4 lg:mt-10"
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -239,7 +238,7 @@ export default function RootPage() {
               </motion.div>
             </motion.div>
             <motion.div
-              className="hidden md:flex col-span-1 mx-auto justify-center items-center "
+              className="col-span-1 mx-auto hidden items-center justify-center md:flex"
               initial={{ x: 100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{
@@ -247,14 +246,14 @@ export default function RootPage() {
                 type: "spring",
               }}
             >
-              <div className="rounded-full h-auto w-auto max-w-[20vw] transition-all ease duration-300">
+              <div className="ease h-auto w-auto max-w-[20vw] rounded-full transition-all duration-300">
                 <Image
                   src={Me}
                   width={400}
                   height={550}
                   placeholder="blur"
                   alt="EaMZ"
-                  className="rounded-full w-full h-full object-cover"
+                  className="h-full w-full rounded-full object-cover"
                 />
               </div>
             </motion.div>
@@ -325,11 +324,27 @@ export default function RootPage() {
             </>
           }
           buttons={
-            <div className="flex justify-center items-center space-x-4">
+            <div className="flex items-center justify-center space-x-4">
+              <motion.a
+                href="https://wa.me/584122970632"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-main text-light transition-all duration-300 ease-in-out hover:scale-95"
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{
+                  y: { delay: 0 },
+                  opacity: { delay: 0.1 },
+                }}
+              >
+                <FontAwesomeIcon icon={faWhatsapp} className="text-3xl" />
+              </motion.a>
+
               <motion.a
                 href="mailto:eliezermeza.dev@gmail.com?subject=Hola&body=Hello Eliezer,"
                 aria-label="Send email"
-                className="flex justify-center items-center bg-main w-14 h-14 rounded-full text-light hover:scale-95 transition-all ease-in-out duration-300"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-main text-light transition-all duration-300 ease-in-out hover:scale-95"
                 initial={{ y: 40, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{
@@ -345,7 +360,7 @@ export default function RootPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub profile"
-                className="flex justify-center items-center bg-main w-14 h-14 rounded-full text-light hover:scale-95 transition-all ease-in-out duration-300"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-main text-light transition-all duration-300 ease-in-out hover:scale-95"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
@@ -361,7 +376,7 @@ export default function RootPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile"
-                className="flex justify-center items-center bg-main w-14 h-14 rounded-full text-light hover:scale-95 transition-all ease-in-out duration-300"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-main text-light transition-all duration-300 ease-in-out hover:scale-95"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
@@ -378,5 +393,5 @@ export default function RootPage() {
         <ScrollIndicator />
       </FullPageWrapper>
     </>
-  );
+  )
 }
