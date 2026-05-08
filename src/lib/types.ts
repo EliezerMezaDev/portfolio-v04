@@ -14,6 +14,13 @@ export interface TechnologyData {
   technologies: Technology[]
 }
 
+export type ImageType = "flat" | "desktop" | "android"
+
+export interface ProjectImage {
+  src: string
+  type?: ImageType
+}
+
 export interface ProjectFrontmatter {
   title: string
   slug: string
@@ -24,7 +31,7 @@ export interface ProjectFrontmatter {
   preview?: string
   code?: string
   thumbnail: string
-  images: string[]
+  images: ProjectImage[]
   category: number[]
   tech: string[]
 }

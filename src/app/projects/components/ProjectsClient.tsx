@@ -94,7 +94,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
           </span>
         </motion.div>
 
-        <div className="container mx-auto mb-10 grid w-screen cursor-pointer grid-cols-1 gap-4 px-10 md:grid-cols-2">
+        <div className="container mx-auto mb-10 grid w-screen cursor-pointer grid-cols-1 gap-4 md:px-10 md:grid-cols-2">
           {projects.map((project, index) => (
             <ProjectCard
               index={index}

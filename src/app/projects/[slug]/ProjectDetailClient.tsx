@@ -12,7 +12,9 @@ import Image from "next/image"
 import BlurImage from "@public/image/placeholder/blur.jpg"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-import { Project } from "@lib/types"
+import { Project, ImageType } from "@lib/types"
+import { Android } from "@components/ui/android"
+import { Desktop } from "@components/ui/desktop"
 
 interface ProjectWithTechNames extends Project {
   techNames: string[]
@@ -20,14 +22,50 @@ interface ProjectWithTechNames extends Project {
 
 function ProjectImage({
   src,
+  type,
   alt,
   index,
 }: {
   src: string
+  type?: ImageType
   alt: string
   index: number
 }) {
   const [loaded, setLoaded] = useState(false)
+
+  if (type === "android") {
+    return (
+      <div className="relative mx-auto h-[600px] w-[300px] rounded-[2.5rem] border-[14px] border-dark bg-dark">
+        <div className="bg-base absolute -start-[17px] top-[72px] h-[32px] w-[3px] rounded-s-lg"></div>
+        <div className="bg-base absolute -start-[17px] top-[124px] h-[46px] w-[3px] rounded-s-lg"></div>
+        <div className="bg-base absolute -start-[17px] top-[178px] h-[46px] w-[3px] rounded-s-lg"></div>
+        <div className="bg-base absolute -end-[17px] top-[142px] h-[64px] w-[3px] rounded-e-lg"></div>
+        <div className="h-[572px] w-[272px] overflow-hidden rounded-[2rem] bg-dark">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            placeholder="blur"
+            blurDataURL={BlurImage.src}
+            loading={index === 0 ? "eager" : "lazy"}
+            onLoad={() => setLoaded(true)}
+          />
+        </div>
+      </div>
+    )
+  }
+
+  if (type === "desktop") {
+    return (
+      <div className="relative mx-auto mb-5 flex w-full max-w-7xl items-center justify-center">
+        <Desktop
+          src={src}
+          className={loaded ? "" : "opacity-0"}
+          onLoad={() => setLoaded(true)}
+        />
+      </div>
+    )
+  }
 
   return (
     <div className="relative mx-auto mb-5 w-full max-w-7xl">
@@ -81,7 +119,7 @@ function ScrollDownButton() {
       >
         <FontAwesomeIcon
           icon={isAtBottom ? faChevronUp : faChevronDown}
-          className="text-2xl text-white"
+          className="text-3hite text-2xl"
         />
       </motion.div>
     </div>
@@ -109,10 +147,10 @@ export default function ProjectDetailClient({
       <ScrollDownButton />
 
       <div className="flex min-h-screen flex-col items-start justify-center">
-        <div className="flex w-full flex-col-reverse items-start max-sm:gap-4 md:grid md:grid-cols-[1fr_2fr]">
+        <div className="flex w-full flex-col items-start max-sm:gap-4 md:grid md:grid-cols-[1fr_1fr_100px]">
           <div className="flex flex-col items-start justify-center space-y-4 sm:min-h-0 md:space-y-10">
             <div className="">
-              <p className="text-base tracking-[8px] text-dark uppercase">
+              <p className="text-xs tracking-[8px] text-dark uppercase">
                 Proyecto
               </p>
               <h1 className="text-5xl font-bold text-main md:mb-2 md:text-7xl">
@@ -121,37 +159,35 @@ export default function ProjectDetailClient({
             </div>
 
             <div>
-              <p className="text-base tracking-[8px] text-dark uppercase">
-                Rol
-              </p>
-              <h2 className="text-2xl text-darken lg:text-4xl">
+              <p className="text-xs tracking-[8px] text-dark uppercase">Rol</p>
+              <h2 className="text-2xl text-darken lg:text-3xl">
                 {project.role}
               </h2>
             </div>
             <div>
-              <p className="text-base tracking-[8px] text-dark uppercase">
+              <p className="text-xs tracking-[8px] text-dark uppercase">
                 Stack
               </p>
-              <h2 className="text-2xl text-darken lg:text-4xl">
+              <h2 className="text-2xl text-darken lg:text-3xl">
                 {project.techNames.join(", ")}
               </h2>
             </div>
             <div>
-              <p className="text-base tracking-[8px] text-dark uppercase">
+              <p className="text-xs tracking-[8px] text-dark uppercase">
                 Fecha
               </p>
-              <h2 className="text-2xl text-darken lg:text-4xl">
+              <h2 className="text-2xl text-darken lg:text-3xl">
                 {project.date}
               </h2>
             </div>
             {(project.preview || project.code) && (
               <div>
-                <p className="text-base tracking-[8px] text-dark uppercase">
+                <p className="text-xs tracking-[8px] text-dark uppercase">
                   Enlances
                 </p>
                 <div className="flex gap-6">
                   {project.preview && (
-                    <p className="text-2xl text-darken lg:text-4xl">
+                    <p className="text-2xl text-darken lg:text-3xl">
                       <a
                         href={project.preview}
                         target="_blank"
@@ -163,7 +199,7 @@ export default function ProjectDetailClient({
                     </p>
                   )}
                   {project.code && (
-                    <p className="text-2xl text-darken lg:text-4xl">
+                    <p className="text-2xl text-darken lg:text-3xl">
                       <a
                         href={project.code}
                         target="_blank"
@@ -178,7 +214,7 @@ export default function ProjectDetailClient({
             )}
           </div>
           <div className="flex flex-col items-start justify-start">
-            <h2 className="text-base tracking-[8px] text-dark uppercase">
+            <h2 className="hidden text-base tracking-[8px] text-dark uppercase md:block">
               Descripcion
             </h2>
             <div className="prose text-justify tracking-wide text-light-5">
@@ -190,12 +226,13 @@ export default function ProjectDetailClient({
         </div>
       </div>
 
-      <div className="mx-auto grid w-full grid-cols-1 p-5 md:p-20">
+      <div className="mx-auto grid w-full grid-cols-1 md:p-20">
         <div className="flex h-auto w-full flex-col justify-center text-center">
           {project.images.map((image, index) => (
             <ProjectImage
               key={index}
-              src={image}
+              src={image.src}
+              type={image.type}
               alt={`Project Image ${index + 1}`}
               index={index}
             />
