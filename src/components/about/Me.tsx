@@ -1,8 +1,8 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import Me_Main from "@public/image/portrait.webp"
-import Me_Sec from "@public/image/me1.jpg"
-import Me_Ter from "@public/image/me4.jpg"
+import Me_Sec from "@public/image/me1.webp"
+import Me_Ter from "@public/image/me4.webp"
 import Title from "./title"
 
 export default function Me() {
