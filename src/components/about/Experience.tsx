@@ -104,13 +104,13 @@ function ExperienceCard({
     >
       {/* Card */}
       <div
-        className={`ml-6 rounded-2xl border border-gray-300/30 bg-white/20 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:shadow-xl md:ml-0`}
+        className={`ml-6 rounded-2xl border border-dark/25 bg-light/35 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-xl md:ml-0`}
       >
         {/* Company & Position */}
         <div className="mb-6 flex flex-col justify-between lg:flex-row">
           {experience.site ? (
             <a href={experience.site} target="_blank" rel="noopener noreferrer">
-              <h3 className="hover:text-accent cursor-pointer text-2xl font-bold transition-all duration-300">
+              <h3 className="hover:text-main cursor-pointer text-2xl font-bold transition-all duration-300">
                 {experience.company}
               </h3>
             </a>
@@ -118,15 +118,15 @@ function ExperienceCard({
             <h3 className="text-2xl font-bold">{experience.company}</h3>
           )}
 
-          <div className="flex flex-col font-bold text-black/85 lg:items-end">
+          <div className="flex flex-col font-bold text-dark lg:items-end">
             <h4>{`${experience.startDate} - ${experience.endDate}`}</h4>
             <span className="text-sm">{`${experience.location}`}</span>
           </div>
         </div>
 
-        <h5 className="text-lg font-medium text-black/85">
+        <h5 className="text-lg font-medium text-dark">
           {experience.position},
-          <span className="ml-2 font-normal text-black/50">
+          <span className="ml-2 font-normal text-darken/50">
             {experience.type}
           </span>
         </h5>
@@ -141,7 +141,7 @@ function ExperienceCard({
           {experience.skills.map((skill: string, idx: number) => (
             <span
               key={idx}
-              className="rounded-full border border-gray-400/40 bg-linear-to-r from-light to-light-2/50 px-3 py-1 text-sm font-medium text-black backdrop-blur-sm transition-all duration-300 hover:scale-105"
+              className="rounded-full border border-gray-400/40 bg-linear-to-r from-light to-light-2/50 px-3 py-1 text-sm font-medium text-darken backdrop-blur-sm transition-all duration-300 hover:scale-105"
             >
               {skill}
             </span>
@@ -162,16 +162,16 @@ export default function Experience() {
 
       <section className="relative mx-auto w-full px-8">
         {/* Timeline line - hidden on mobile, visible on md+ */}
-        <div className="absolute left-1/2 hidden h-full w-1 -translate-x-1/2 transform bg-linear-to-b from-black via-light-3 to-transparent md:block" />
+        <div className="absolute left-1/2 hidden h-full w-1 -translate-x-1/2 transform bg-linear-to-b from-darken via-light-3 to-transparent md:block" />
         {/* Mobile timeline line */}
-        <div className="absolute left-0 h-full w-1 bg-linear-to-b from-black via-light-3 to-transparent md:hidden" />{" "}
+        <div className="absolute left-0 h-full w-1 bg-linear-to-b from-darken via-light-3 to-transparent md:hidden" />{" "}
         {/* Experience cards */}
         <div className="relative space-y-12 md:space-y-16">
           <AnimatePresence>
             {displayedExperiences.map((experience, index) => (
               <div key={experience.id} className="relative">
                 <div
-                  className={`absolute top-5 left-0 z-30 h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-black shadow-lg md:top-4 md:left-1/2 md:-translate-x-1/2`}
+                  className={`absolute top-5 left-0 z-30 h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-darken shadow-lg md:top-4 md:left-1/2 md:-translate-x-1/2`}
                 />
 
                 <ExperienceCard
@@ -193,7 +193,7 @@ export default function Experience() {
           >
             <button
               onClick={() => setShowAll(!showAll)}
-              className="flex items-center gap-2 rounded-full bg-black px-8 py-3 font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-800"
+              className="flex items-center gap-2 rounded-full bg-darken px-8 py-3 font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-800"
             >
               {showAll ? (
                 <>

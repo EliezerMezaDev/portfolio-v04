@@ -96,8 +96,8 @@ function SkillCard({
       onClick={onClick}
       className={`group relative cursor-pointer border px-2 py-4 transition-all duration-300 md:rounded-2xl ${
         isSelected
-          ? "from-accent/5 to-accent-light/10 border-accent/75 border bg-linear-to-r"
-          : "border-black/5 hover:scale-95 hover:border-black/20"
+          ? "border border-main/75 bg-linear-to-r from-light/50 to-light-2/50"
+          : "border-dark/25 bg-light/35 hover:scale-95 hover:border-main-dark"
       }`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -107,17 +107,17 @@ function SkillCard({
         <div
           className={`rounded-xl p-2 px-4 transition-all duration-300 md:p-4`}
         >
-          <Icon className="h-10 w-10 text-black" />
+          <Icon className="h-10 w-10 text-dark" />
         </div>
         <div className="max-md:flex max-md:justify-start md:w-fit">
-          <h3 className="hidden text-xl font-semibold text-black md:mb-2 md:block md:text-lg">
+          <h3 className="hidden text-xl font-semibold text-darken md:mb-2 md:block md:text-lg">
             {skill.title}
           </h3>
-          <h3 className="text-lg font-semibold text-black md:hidden">
+          <h3 className="text-lg font-semibold text-darken md:hidden">
             {skill.shortTitle}
           </h3>
 
-          <p className="hidden text-sm leading-relaxed text-gray-600 md:block">
+          <p className="hidden text-sm leading-relaxed text-dark md:block">
             {skill.description}
           </p>
         </div>
@@ -143,12 +143,12 @@ function SkillDetails({ selectedSkill }: { selectedSkill: any }) {
       className="grid grid-cols-1 gap-6 md:grid-cols-[4fr_3fr] xl:grid-cols-[3fr_2fr]"
     >
       <motion.div
-        className="rounded-2xl border border-black/10 bg-light p-8 shadow-sm"
+        className="rounded-2xl border border-dark/25 bg-light/35 p-8"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <h3 className="mb-6 text-center text-2xl font-semibold text-black">
+        <h3 className="mb-6 text-center text-2xl font-semibold text-dark">
           Tech Stack
         </h3>
         <motion.div
@@ -168,8 +168,8 @@ function SkillDetails({ selectedSkill }: { selectedSkill: any }) {
                 variants={tagVariants}
                 className={`flex cursor-default items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   skill.highlight
-                    ? "from-accent to-accent/75 z-10 scale-105 border-black bg-linear-to-r text-white shadow-md hover:shadow-lg"
-                    : "border border-black/10 bg-linear-to-r from-light to-black/5 text-black hover:bg-white/60"
+                    ? "z-10 scale-105 border-dark bg-linear-to-r from-main to-main/75 text-white shadow-md"
+                    : "border border-dark/10 bg-linear-to-r from-light to-dark/5 text-dark"
                 }`}
               >
                 {skill.name}
@@ -180,12 +180,12 @@ function SkillDetails({ selectedSkill }: { selectedSkill: any }) {
       </motion.div>
 
       <motion.div
-        className="rounded-2xl border border-black/10 bg-light p-8 shadow-sm"
+        className="rounded-2xl border border-dark/25 bg-light/35 p-8"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <h3 className="mb-6 text-center text-2xl font-semibold text-black">
+        <h3 className="mb-6 text-center text-2xl font-semibold text-dark">
           Herramientas e infraestructura
         </h3>
         <motion.div
@@ -202,7 +202,7 @@ function SkillDetails({ selectedSkill }: { selectedSkill: any }) {
             <motion.span
               key={tool}
               variants={tagVariants}
-              className="flex cursor-default items-center gap-2 rounded-full border border-black/10 bg-linear-to-r from-light to-black/5 px-4 py-2 text-sm font-medium text-black transition-all duration-300 hover:bg-white/60"
+              className="flex cursor-default items-center gap-2 rounded-full border border-dark/10 bg-linear-to-r from-light to-dark/5 px-4 py-2 text-sm font-medium text-dark transition-all duration-300"
             >
               {tool}
             </motion.span>
@@ -217,10 +217,10 @@ export default function Skills() {
   const [selectedCategory, setSelectedCategory] =
     useState<keyof typeof skillCategories>("web")
   return (
-    <section>
+    <section className="w-full">
       <Title title="Habilidades y competencias" isMain={false} />
 
-      <div className="relative">
+      <div className="relative w-full">
         <div className="mx-auto grid grid-cols-1 gap-6 py-2 md:px-8 md:py-6">
           <div className="grid grid-cols-3 md:gap-6">
             {Object.entries(skillCategories).map(([key, skill], index) => (
