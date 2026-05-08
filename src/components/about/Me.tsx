@@ -1,21 +1,21 @@
-import Image from "next/image";
-import { motion } from "framer-motion";
-import Me_Main from "@public/image/portrait.webp";
-import Me_Sec from "@public/image/me1.jpg";
-import Me_Ter from "@public/image/me4.jpg";
-import Title from "./title";
+import Image from "next/image"
+import { motion } from "framer-motion"
+import Me_Main from "@public/image/portrait.webp"
+import Me_Sec from "@public/image/me1.webp"
+import Me_Ter from "@public/image/me4.webp"
+import Title from "./title"
 
 export default function Me() {
   return (
     <section>
       <Title title="Sobre mí" isMain={true} />
 
-      <div className="relative mx-auto gap-16 md:gap-4 xl:gap-8 grid grid-cols-1 md:grid-cols-2">
+      <div className="relative mx-auto grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-4 xl:gap-8">
         {/* Left Side - Images */}
-        <div className="flex justify-center items-start flex-col">
-          <div className="images relative w-full aspect-square md:h-full lg:aspect-square">
+        <div className="flex flex-col items-start justify-center">
+          <div className="images relative aspect-square w-full md:h-full lg:aspect-square">
             {/* Main Image */}
-            <div className="absolute top-24 md:top-36 lg:top-24 right-2 md:right-4 lg:right-8 xl:right-12 w-[65%] md:w-[70%] lg:w-[55%] aspect-square transition-all ease duration-300 z-10">
+            <div className="ease absolute top-24 right-2 z-10 aspect-square w-[65%] transition-all duration-300 md:top-36 md:right-4 md:w-[70%] lg:top-24 lg:right-8 lg:w-[55%] xl:right-12">
               <motion.div
                 initial={{ opacity: 0, scale: 0.5, x: 100 }}
                 whileInView={{
@@ -23,7 +23,7 @@ export default function Me() {
                   scale: 1,
                   x: 0,
                 }}
-                className="relative w-full h-full"
+                className="relative h-full w-full"
               >
                 <Image
                   src={Me_Main}
@@ -35,7 +35,7 @@ export default function Me() {
                 />
               </motion.div>
             </div>
-            <div className="absolute top-6 md:top-12 left-8 md:left-0 lg:left-18 xl:left-24 w-[40%]  lg:w-[30%] aspect-square grayscale hover:grayscale-0 transition-all ease duration-300">
+            <div className="ease absolute top-6 left-8 aspect-square w-[40%] grayscale transition-all duration-300 hover:grayscale-0 md:top-12 md:left-0 lg:left-18 lg:w-[30%] xl:left-24">
               <motion.div
                 initial={{
                   opacity: 0,
@@ -48,7 +48,7 @@ export default function Me() {
                   x: 0,
                 }}
                 transition={{ delay: 0.3 }}
-                className="relative w-full h-full"
+                className="relative h-full w-full"
               >
                 <Image
                   src={Me_Sec}
@@ -60,7 +60,7 @@ export default function Me() {
                 />
               </motion.div>
             </div>
-            <div className="absolute bottom-0 md:bottom-10 lg:bottom-20 xl:bottom-30 lg:left-4 xl:left-8 w-[40%] md:w-[60%] lg:w-[40%] aspect-square grayscale hover:grayscale-0 transition-all ease duration-300">
+            <div className="ease absolute bottom-0 aspect-square w-[40%] grayscale transition-all duration-300 hover:grayscale-0 md:bottom-10 md:w-[60%] lg:bottom-20 lg:left-4 lg:w-[40%] xl:bottom-30 xl:left-8">
               <motion.div
                 initial={{
                   opacity: 0,
@@ -75,7 +75,7 @@ export default function Me() {
                 transition={{
                   delay: 0.5,
                 }}
-                className="relative w-full h-full"
+                className="relative h-full w-full"
               >
                 <Image
                   src={Me_Ter}
@@ -92,7 +92,7 @@ export default function Me() {
 
         {/* Right Side - Info */}
         <motion.div
-          className="lg:pt-12 flex justify-start items-start flex-col"
+          className="flex flex-col items-start justify-start lg:pt-12"
           initial={{
             opacity: 0,
             x: 200,
@@ -107,10 +107,10 @@ export default function Me() {
             type: "spring",
           }}
         >
-          <h2 className="text-2xl text-black font-bold tracking-wider mb-3">
+          <h2 className="mb-3 text-2xl font-bold tracking-wider text-black">
             Eliezer A Meza
           </h2>
-          <p className="text-light-5 text-justify title text-lg leading-relaxed">
+          <p className="title text-justify text-lg leading-relaxed text-light-5">
             Soy un <b>Ingeniero de Software Full-Stack</b> con más de 5 años de
             trayectoria profesional. Me especializo en diseñar arquitecturas
             altamente escalables y soluciones híbridas modernas, manteniendo un
@@ -135,5 +135,5 @@ export default function Me() {
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

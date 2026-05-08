@@ -1,182 +1,168 @@
-"use client";
-import Hr from "@components/ui/Hr";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import Title from "./title";
+"use client"
+import Hr from "@components/ui/Hr"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react"
+import Title from "./title"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
-const experiences: {
-  id: number;
-  startDate: string;
-  endDate: string;
-  company: string;
-  position: string;
-  type: string;
-  site?: string;
-  location: string;
-  description: string;
-  skills: string[];
-}[] = [
-  {
-    id: 1,
-    startDate: "Oct 2021",
-    endDate: "Ago 2023",
-    company: "Spartan Techs C.A.",
-    site: "https://www.grupospartan.com/",
-    position: "Desarrollador Mobile",
-    type: "Tiempo completo",
-    location: "Nueva Esparta, Venezuela",
-    description:
-      "Diseño y desarrollo de aplicaciones móviles empresariales orientadas a la gestión de inventarios y análisis de costos.",
-    skills: ["Ionic", "Angular"],
-  },
-  {
-    id: 2,
-    startDate: "Ago 2023",
-    endDate: "Mar 2025",
-    company: "Spartan Techs C.A.",
-    site: "https://www.grupospartan.com/",
-    position: "Desarrollador Fullstack",
-    type: "Tiempo completo",
-    location: "Nueva Esparta, Venezuela",
-    description:
-      "Desarrollo integral de plataformas web y móviles, asegurando la cohesión entre el frontend y backend para sistemas administrativos y transaccionales.",
-    skills: ["Angular", "Ionic", "Next.js", "Node.js", "TypeScript"],
-  },
-  {
-    id: 3,
-    startDate: "Abr 2025",
-    endDate: "Dic 2025",
-    company: "Kodea Labs",
-    site: "https://www.kodea.la/",
-    position: "Desarrollador Fullstack",
-    type: "Tiempo completo",
-    location: "Remoto",
-    description:
-      "Arquitectura de aplicaciones móviles hibridas para criptomonedas y plataformas fintech, implementando flujos de transacciones cifradas y gestión de estado avanzada.",
-    skills: ["Next.js", "Django", "Flutter", "Dart"],
-  },
-  {
-    id: 4,
-    startDate: "Nov 2025",
-    endDate: "Actualidad",
-    company: "Xiiball",
-    position: "Desarrollador web",
-    type: "Freelance",
-    location: "Remoto",
-    description:
-      "Desarrollo de interfaces interactivas con inteligencia artificial conversacional y gestión de arquitecturas escalables basadas en monorepositorios.",
-    skills: ["Reactjs", "Nextjs", "TypeScript"],
-  },
-  {
-    id: 5,
-    startDate: "Nov 2024",
-    endDate: "Actualidad",
-    company: "Novanet Studio C.A.",
-    site: "https://novanet.studio/",
-    position: "Desarrollador Fullstack",
-    type: "Consultor",
-    location: "Remoto",
-    description:
-      "Consultoría técnica para la planificación de nuevas plataformas web y el mantenimiento de sistemas ERP con integración de módulos de pago.",
-    skills: ["Nextjs", "Nuxt", "Astro", "Strapi", "Bun", "PostgreSQL"],
-  },
-];
+interface Experience {
+  startDate: string
+  endDate: string
+  company: string
+  site?: string
+  position: string
+  type: string
+  location: string
+  tech: string[]
+  techNames: string[]
+  content: string
+}
 
-experiences.reverse();
+type ExperiencesResponse = Omit<Experience, "techNames"> & {
+  techNames?: string[]
+}
+
+async function getAllExperiences() {
+  const { getAllExperiencesServer } = await import("@lib/experiences-action")
+  return getAllExperiencesServer()
+}
 
 function ExperienceCard({
   experience,
   index,
   isEven,
 }: {
-  experience: any;
-  index: number;
-  isEven: boolean;
+  experience: Experience
+  index: number
+  isEven: boolean
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.2, duration: 0.6 }}
-      className={`relative group ${
+      className={`group relative ${
         isEven ? "md:ml-auto md:pl-12" : "md:mr-auto md:pr-12"
       } md:w-1/2`}
     >
       {/* Card */}
       <div
-        className={`bg-white/20 backdrop-blur-sm border border-gray-300/30 rounded-2xl p-6 shadow-lg 
-				hover:shadow-xl hover:bg-white/30 transition-all duration-300 ml-6 md:ml-0`}
+        className={`ml-6 rounded-2xl border border-dark/25 bg-light/35 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-xl md:ml-0`}
       >
         {/* Company & Position */}
-        <div className="flex flex-col lg:flex-row justify-between mb-6">
+        <div className="mb-6 flex flex-col justify-between lg:flex-row">
           {experience.site ? (
             <a href={experience.site} target="_blank" rel="noopener noreferrer">
-              <h3 className="font-bold text-2xl transition-all duration-300 cursor-pointer hover:text-accent">
+              <h3 className="cursor-pointer text-2xl font-bold transition-all duration-300 hover:text-main">
                 {experience.company}
               </h3>
             </a>
           ) : (
-            <h3 className="font-bold text-2xl">{experience.company}</h3>
+            <h3 className="text-2xl font-bold">{experience.company}</h3>
           )}
-
-          <div className="text-black/85 font-bold flex flex-col lg:items-end">
+          <div className="flex flex-col font-bold text-dark lg:items-end">
             <h4>{`${experience.startDate} - ${experience.endDate}`}</h4>
-            <span className="text-sm ">{`${experience.location}`}</span>
+            <span className="text-sm">{`${experience.location}`}</span>
           </div>
         </div>
 
-        <h5 className="font-medium text-lg text-black/85">
+        <h5 className="text-lg font-medium text-dark">
           {experience.position},
-          <span className="font-normal text-black/50 ml-2">
+          <span className="ml-2 font-normal text-darken/50">
             {experience.type}
           </span>
         </h5>
 
-        {/* Description */}
-        <p className="text-light-5 leading-relaxed mb-4">
-          {experience.description}
-        </p>
+        <div className="mb-4 leading-relaxed text-light-5">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {experience.content}
+          </ReactMarkdown>
+        </div>
 
-        {/* Skills */}
         <div className="flex flex-wrap gap-2">
-          {experience.skills.map((skill: string, idx: number) => (
+          {experience.techNames.map((name, idx) => (
             <span
               key={idx}
-              className="bg-linear-to-r from-light to-light-2/50 border border-gray-400/40 text-black px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm hover:scale-105"
+              className="rounded-full border border-gray-400/40 bg-linear-to-r from-light to-light-2/50 px-3 py-1 text-sm font-medium text-darken backdrop-blur-sm transition-all duration-300 hover:scale-105"
             >
-              {skill}
+              {name}
             </span>
           ))}
         </div>
       </div>
     </motion.div>
-  );
+  )
 }
 
 export default function Experience() {
-  const [showAll, setShowAll] = useState(false);
-  const displayedExperiences = showAll ? experiences : experiences.slice(0, 2);
+  const [experiences, setExperiences] = useState<Experience[]>([])
+  const [loading, setLoading] = useState(true)
+  const [showAll, setShowAll] = useState(false)
+
+  useEffect(() => {
+    getAllExperiences().then((data: any[]) => {
+      const withTechNames = data.map((exp) => {
+        const allTech: Record<string, string> = {
+          nextjs: "Next.js",
+          react: "React",
+          nuxt: "Nuxt",
+          astro: "Astro",
+          angular: "Angular",
+          ionic: "Ionic",
+          flutter: "Flutter",
+          dart: "Dart",
+          nodejs: "Node.js",
+          django: "Django",
+          strapi: "Strapi",
+          bun: "Bun",
+          typescript: "TypeScript",
+          tailwindcss: "Tailwind CSS",
+          shadcniui: "Shadcn UI",
+          prisma: "Prisma",
+          mysql: "MySQL",
+          postgresql: "PostgreSQL",
+        }
+        const techNames = (exp.techNames || exp.tech || []).map(
+          (id: string) => allTech[id] || id
+        )
+        return { ...exp, techNames }
+      })
+      setExperiences(withTechNames)
+      setLoading(false)
+    })
+  }, [])
+
+  const displayedExperiences = showAll ? experiences : experiences.slice(0, 3)
+
+  if (loading) {
+    return (
+      <>
+        <Title title="Experiencia" isMain={false} />
+        <section className="relative mx-auto w-full px-8">
+          <div className="flex justify-center py-10">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-darken border-t-transparent"></div>
+          </div>
+        </section>
+      </>
+    )
+  }
 
   return (
     <>
       <Title title="Experiencia" isMain={false} />
+      <section className="relative mx-auto w-full px-8">
+        <div className="absolute left-1/2 hidden h-full w-1 -translate-x-1/2 transform bg-linear-to-b from-darken via-light-3 to-transparent md:block" />
+        <div className="absolute left-0 h-full w-1 bg-linear-to-b from-darken via-light-3 to-transparent md:hidden" />
 
-      <section className="relative w-full px-8 mx-auto">
-        {/* Timeline line - hidden on mobile, visible on md+ */}
-        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-linear-to-b from-black via-light-3 to-transparent h-full" />
-        {/* Mobile timeline line */}
-        <div className="md:hidden absolute left-0 w-1 bg-linear-to-b from-black via-light-3 to-transparent h-full" />{" "}
-        {/* Experience cards */}
-        <div className="space-y-12 md:space-y-16 relative">
+        <div className="relative space-y-12 md:space-y-16">
           <AnimatePresence>
             {displayedExperiences.map((experience, index) => (
-              <div key={experience.id} className="relative">
-                <div
-                  className={`absolute w-6 h-6 bg-black rounded-full border-4 border-white shadow-lg z-30
-										md:left-1/2 md:-translate-x-1/2 md:top-4
-										left-0 -translate-x-1/2 top-5`}
-                />
-
+              <div
+                key={experience.company + experience.startDate}
+                className="relative"
+              >
+                <div className="absolute top-5 left-0 z-30 h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-darken shadow-lg md:top-4 md:left-1/2 md:-translate-x-1/2" />
                 <ExperienceCard
                   experience={experience}
                   index={index}
@@ -186,24 +172,23 @@ export default function Experience() {
             ))}
           </AnimatePresence>
         </div>
-        {/* Expand/Collapse button */}
-        {experiences.length > 3 && (
+
+        {experiences.length > 2 && (
           <motion.div
-            className="flex justify-center mt-12"
+            className="mt-12 flex justify-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             <button
               onClick={() => setShowAll(!showAll)}
-              className="bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-full font-medium 
-									transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2"
+              className="flex items-center gap-2 rounded-full bg-darken px-8 py-3 font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-800"
             >
               {showAll ? (
                 <>
                   Ver menos
                   <svg
-                    className="w-4 h-4 transform rotate-180"
+                    className="h-4 w-4 rotate-180 transform"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -220,7 +205,7 @@ export default function Experience() {
                 <>
                   Ver más
                   <svg
-                    className="w-4 h-4"
+                    className="h-4 w-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -236,12 +221,12 @@ export default function Experience() {
               )}
             </button>
           </motion.div>
-        )}{" "}
-        {/* Gradient fade effect at bottom */}
+        )}
+
         {!showAll && (
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-stale-300 to-transparent pointer-events-none"></div>
+          <div className="from-stale-300 pointer-events-none absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t to-transparent" />
         )}
       </section>
     </>
-  );
+  )
 }

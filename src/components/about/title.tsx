@@ -1,22 +1,22 @@
-import Hr from "@components/ui/Hr";
+import Hr from "@components/ui/Hr"
 
 export default function Title({
   title,
   isMain = false,
 }: {
-  title: string;
-  isMain: boolean;
+  title: string
+  isMain: boolean
 }) {
   return (
-    <div className="mt-10 flex flex-col justify-start items-center w-full md:pl-12">
-      <div className="flex justify-center items-center flex-col my-5 self-start ">
+    <div className="mt-10 flex w-full flex-col items-center justify-start md:pl-12">
+      <div className="my-5 flex flex-col items-center justify-center self-start">
         <Hr variant="long" />
         {isMain ? (
-          <h1 className="text-3xl font-bold mt-3">{title}</h1>
+          <h1 className="mt-3 text-3xl font-bold">{title}</h1>
         ) : (
-          <h2 className="text-3xl font-bold mt-3">{title}</h2>
+          <h2 className="mt-3 text-3xl font-bold">{title}</h2>
         )}
       </div>
     </div>
-  );
+  )
 }

@@ -1,9 +1,10 @@
-import "./globals.css";
-import { Poppins, Jost } from "next/font/google";
-import Navbar from "@components/ui/Navbar";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-config.autoAddCss = false;
+import "./globals.css"
+import { Poppins, Jost, JetBrains_Mono } from "next/font/google"
+import Navbar from "@components/ui/Navbar"
+import { config } from "@fortawesome/fontawesome-svg-core"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+
+config.autoAddCss = false
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -11,29 +12,24 @@ const poppins = Poppins({
   style: ["normal", "italic"],
   display: "swap",
   variable: "--font-poppins",
-});
+})
 
 const jost = Jost({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-jost",
-});
+})
 
 export const metadata = {
   metadataBase: new URL("https://eamz.netlify.app/"),
   title: "EaMZ | Portofolio",
 
-  description:
-    "My name is Eliezer A Meza, This is my portofolio website.",
+  description: "My name is Eliezer A Meza, This is my portofolio website.",
 
   author: "Eliezer A Meza",
   siteUrl: "https://eamz.netlify.app/",
   applicationName: "EaMZ",
-
-  icons: {
-    icon: '/favicon.svg',
-  },
 
   keywords: ["EaMZ"],
 
@@ -45,14 +41,14 @@ export const metadata = {
     description: "My name is Eliezer A Meza, This is my portofolio website.",
     images: [
       {
-        url: "/og-image-rev.png",
+        url: "/og-image-rev.webp",
         alt: "EaMZ Portofolio",
         width: 1200,
         height: 630,
       },
     ],
   },
-};
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -64,9 +60,13 @@ const jsonLd = {
     "https://github.com/EliezerMezaDev/",
     "https://www.linkedin.com/in/eliezer-a-meza-7a1b882b9/",
   ],
-};
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en" className={`${poppins.variable} ${jost.variable}`}>
       <body>
@@ -78,5 +78,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
       </body>
     </html>
-  );
+  )
 }

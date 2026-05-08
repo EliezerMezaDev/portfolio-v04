@@ -1,8 +1,7 @@
-"use client";
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { CodeEffect } from "./CodeEffect";
+"use client"
+import { useRef, useState } from "react"
+import { motion } from "framer-motion"
+import Link from "next/link"
 
 const navVariant: any = {
   open: {
@@ -22,7 +21,7 @@ const navVariant: any = {
       ease: [0.4, 0, 1, 1],
     },
   },
-};
+}
 
 const itemVariants: any = {
   open: (custom: any) => ({
@@ -43,28 +42,34 @@ const itemVariants: any = {
       duration: 0.2,
     },
   },
-};
+}
 
-const NavItems = ({ isNavOpen, setIsNavOpen }: { isNavOpen: boolean, setIsNavOpen: (value: boolean) => void }) => {
+const NavItems = ({
+  isNavOpen,
+  setIsNavOpen,
+}: {
+  isNavOpen: boolean
+  setIsNavOpen: (value: boolean) => void
+}) => {
   const handleItemClick = () => {
-    setIsNavOpen(false);
-  };
+    setIsNavOpen(false)
+  }
 
   return (
     <>
       <motion.div
-        className={`fixed z-[45] w-full h-screen flex items-center justify-center overflow-hidden`}
+        className={`fixed z-[45] flex h-screen w-full items-center justify-center overflow-hidden`}
         variants={navVariant}
         animate={isNavOpen ? "open" : "closed"}
         initial={false}
       >
-        <div className="relative flex flex-col items-center space-x-8 min-h-[100vh] bg-main min-w-[100vw] ">
-          <div className="flex flex-col items-center space-y-8 my-auto mx-0 z-50">
+        <div className="relative flex min-h-[100vh] min-w-[100vw] flex-col items-center space-x-8 bg-main">
+          <div className="z-50 mx-0 my-auto flex flex-col items-center space-y-8">
             {/* title */}
             <motion.h1
               variants={itemVariants}
               animate={isNavOpen ? "open" : "closed"}
-              className="text-6xl font-bold text-white "
+              className="text-6xl font-bold text-white"
             >
               Menu
             </motion.h1>
@@ -132,31 +137,31 @@ const NavItems = ({ isNavOpen, setIsNavOpen }: { isNavOpen: boolean, setIsNavOpe
         </div>
       </motion.div>
     </>
-  );
-};
+  )
+}
 
 const Navbar = () => {
-  const navRef = useRef(null);
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const navRef = useRef(null)
+  const [isNavOpen, setIsNavOpen] = useState(false)
 
   const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
+    setIsNavOpen(!isNavOpen)
+  }
 
   return (
     <>
       <nav
         ref={navRef}
-        className={`navbar px-5 md:px-24 w-screen fixed transition-colors ease duration-500 ${isNavOpen
-          ? " bg-main"
-          : ""
-          } inset-0 flex flex-row justify-between items-center h-16 z-50 `}
+        className={`navbar ease fixed w-screen px-5 transition-colors duration-500 md:px-24 ${
+          isNavOpen ? "bg-main" : "bg-light-2/25 backdrop-blur-2xl"
+        } inset-0 z-50 flex h-16 flex-row items-center justify-between`}
       >
         <div>
           <Link href="/">
             <motion.h3
-              className={`ml-2 md:ml-0 text-2xl md:text-3xl ${isNavOpen ? "text-white" : "text-accent"
-                } font-bold`}
+              className={`ml-2 text-2xl md:ml-0 md:text-3xl ${
+                isNavOpen ? "text-white" : "text-main"
+              } font-bold`}
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{
@@ -171,16 +176,18 @@ const Navbar = () => {
         <div className="flex flex-row items-center">
           <button
             aria-label={isNavOpen ? "Close menu" : "Open menu"}
-            className="burger button flex flex-col justify-center items-center space-y-1.5 "
+            className="burger button flex flex-col items-center justify-center space-y-1.5"
             onClick={toggleNav}
           >
             <div
-              className={`w-10 h-1 bg-black rounded-full transition-all ease duration-300 ${isNavOpen ? "rotate-45   bg-white translate-y-[2px]" : ""
-                }`}
+              className={`ease h-1 w-10 rounded-full bg-dark transition-all duration-300 ${
+                isNavOpen ? "translate-y-[2px] rotate-45 bg-white" : ""
+              }`}
             ></div>
             <div
-              className={`w-10 h-1 bg-black rounded-full transition-all ease duration-300 ${isNavOpen ? "-rotate-45 -translate-y-2 bg-white" : ""
-                }`}
+              className={`ease h-1 w-10 rounded-full bg-dark transition-all duration-300 ${
+                isNavOpen ? "-translate-y-2 -rotate-45 bg-white" : ""
+              }`}
             ></div>
           </button>
         </div>
@@ -188,6 +195,6 @@ const Navbar = () => {
       {/* items */}
       <NavItems isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
     </>
-  );
-};
-export default Navbar;
+  )
+}
+export default Navbar

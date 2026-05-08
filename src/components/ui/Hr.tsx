@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import PropTypes from "prop-types";
+import { motion } from "framer-motion"
+import PropTypes from "prop-types"
 
 export default function Hr({ variant }: { variant?: "short" | "long" }) {
   return (
@@ -7,7 +7,7 @@ export default function Hr({ variant }: { variant?: "short" | "long" }) {
       {variant === "long" ? (
         <>
           <motion.div
-            className="bg-accent w-28 h-1 rounded-full mb-3 self-start"
+            className="mb-3 h-1 w-28 self-start rounded-full bg-dark"
             initial={{
               opacity: 0,
               x: -100,
@@ -22,7 +22,7 @@ export default function Hr({ variant }: { variant?: "short" | "long" }) {
             }}
           ></motion.div>
           <motion.div
-            className="bg-accent w-28 h-1 rounded-full"
+            className="h-1 w-28 rounded-full bg-dark"
             initial={{
               opacity: 0,
               x: 200,
@@ -38,9 +38,9 @@ export default function Hr({ variant }: { variant?: "short" | "long" }) {
           ></motion.div>
         </>
       ) : (
-        <div className="flex justify-center items-center flex-col max-md:mt-4 my-2">
+        <div className="my-2 flex flex-col items-center justify-center max-md:mt-4">
           <motion.div
-            className="bg-accent w-20 h-1 rounded-full mb-2"
+            className="mb-2 h-1 w-20 rounded-full bg-dark"
             initial={{
               opacity: 0,
               x: -45,
@@ -55,7 +55,7 @@ export default function Hr({ variant }: { variant?: "short" | "long" }) {
             }}
           ></motion.div>
           <motion.div
-            className="bg-accent w-20 h-1 rounded-full"
+            className="h-1 w-20 rounded-full bg-dark"
             initial={{
               opacity: 0,
               x: 150,
@@ -72,13 +72,13 @@ export default function Hr({ variant }: { variant?: "short" | "long" }) {
         </div>
       )}
     </>
-  );
+  )
 }
 
 Hr.propTypes = {
   variant: PropTypes.oneOf(["short", "long"]),
-};
+}
 
 Hr.defaultProps = {
   variant: "short",
-};
+}

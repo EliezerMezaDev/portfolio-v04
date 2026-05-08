@@ -1,19 +1,19 @@
-import Image from "next/image";
+import Image from "next/image"
 
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
-import Me4 from "@public/image/me4.jpg";
-import Me5 from "@public/image/me5.jpg";
-import Me6 from "@public/image/me6.jpg";
+import Me4 from "@public/image/me4.webp"
+import Me5 from "@public/image/me5.webp"
+import Me6 from "@public/image/me6.webp"
 
-import Title from "./title";
+import Title from "./title"
 
 export default function Education() {
   return (
     <section>
       <Title title="Formación académica" isMain={false} />
 
-      <div className="md:px-8 grid gap-8 md:gap-12">
+      <div className="grid gap-8 md:gap-12 md:px-8">
         {/* Main Content */}
         <div className="grid grid-cols-1">
           <motion.div
@@ -22,45 +22,45 @@ export default function Education() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="font-medium text-lg mb-4">2018 - 2023</div>
+            <div className="mb-4 text-lg font-medium">2018 - 2023</div>
             <div>
-              <h2 className="font-semibold text-xl">
+              <h2 className="text-xl font-semibold">
                 Universidad de Margarita
               </h2>
-              <h3 className="text-md font-normal mb-3">
+              <h3 className="text-md mb-3 font-normal">
                 Ingeniería de sistemas
               </h3>
-              <div className="gap-4 mb-4 flex items-stretch md:h-[300px] xl:h-[400px]">
-                <div className="flex-[1] transition-all duration-300 ease-in-out  group">
+              <div className="mb-4 flex items-stretch gap-4 md:h-[300px] xl:h-[400px]">
+                <div className="group flex-[1] transition-all duration-300 ease-in-out">
                   <Image
                     src={Me5}
                     width={400}
                     height={225}
                     alt="University"
-                    className="rounded-lg w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
+                    className="h-full w-full rounded-lg object-cover grayscale transition-all duration-300 ease-in-out group-hover:grayscale-0"
                   />
                 </div>
-                <div className="flex-[1] transition-all duration-300 ease-in-out  group">
+                <div className="group flex-[1] transition-all duration-300 ease-in-out">
                   <Image
                     src={Me4}
                     width={400}
                     height={225}
                     alt="University"
-                    className="rounded-lg w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
+                    className="h-full w-full rounded-lg object-cover grayscale transition-all duration-300 ease-in-out group-hover:grayscale-0"
                   />
                 </div>
-                <div className="flex-[1] transition-all duration-300 ease-in-out  group">
+                <div className="group flex-[1] transition-all duration-300 ease-in-out">
                   <Image
                     src={Me6}
                     width={400}
                     height={225}
                     alt="University"
-                    className="rounded-lg w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
+                    className="h-full w-full rounded-lg object-cover grayscale transition-all duration-300 ease-in-out group-hover:grayscale-0"
                   />
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <p className="text-gray-600 text-justify title text-lg">
+                <p className="title text-justify text-lg text-gray-600">
                   Cursé mis estudios de Ingeniería en Sistemas en la Universidad
                   de Margarita (UNIMAR), donde obtuve una formación integral en
                   desarrollo de software. Para mi proyecto de grado, desarrollé
@@ -79,5 +79,5 @@ export default function Education() {
         </div>
       </div>
     </section>
-  );
+  )
 }

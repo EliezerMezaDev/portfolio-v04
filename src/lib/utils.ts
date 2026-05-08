@@ -1,15 +1,15 @@
-import { twMerge } from "tailwind-merge";
-import clsx from "clsx";
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
 
-export const cn = (...inputs: any) => {
-  return twMerge(clsx(inputs));
-};
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
 export const codeEffect = (text: string) => {
   const pascalCase = text
     .split(/\s+/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join("");
+    .join("")
 
-  return `<${pascalCase} />`;
-};
+  return `<${pascalCase} />`
+}

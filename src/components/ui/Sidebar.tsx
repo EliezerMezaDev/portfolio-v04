@@ -1,41 +1,41 @@
-"use client";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+"use client"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faHome,
   faUser,
   faFolderOpen,
   faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
-import { useFullPage } from "@alvalens/react-fullpage-snap";
-import { motion } from "framer-motion";
+} from "@fortawesome/free-solid-svg-icons"
+import { useFullPage } from "@alvalens/react-fullpage-snap"
+import { motion } from "framer-motion"
 
 const navItems = [
   { icon: faHome, label: "Inicio", anchor: "home" },
   { icon: faUser, label: "Sobre mi", anchor: "about" },
   { icon: faFolderOpen, label: "Proyectos", anchor: "projects" },
   { icon: faEnvelope, label: "Contacto", anchor: "contact" },
-];
+]
 
 const Sidebar = () => {
-  const { moveTo, activeIndex } = useFullPage();
+  const { moveTo, activeIndex } = useFullPage()
 
   return (
-    <div className="hidden md:flex fixed z-40 bg-main h-[50vh] w-16 flex-col justify-between items-center py-6 top-1/4 rounded-e-3xl">
-      <ul
+    <div className="fixed top-1/4 z-40 hidden h-[50vh] w-16 flex-col items-center justify-between rounded-e-3xl bg-dark py-6 md:flex">
+      <ol
         id="sidebar"
-        className="-ml-1 flex flex-col justify-evenly items-center h-full text-gray-50"
+        className="-ml-1 flex h-full flex-col items-center justify-evenly text-light"
       >
         {navItems.map((item, index) => (
           <li key={item.anchor} data-menuanchor={item.anchor}>
             <button
               aria-label={item.label}
               onClick={() => moveTo(index)}
-              className="relative flex items-center justify-center w-10 h-10 cursor-pointer transition-colors duration-300 hover:bg-black/5 rounded-xl"
+              className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl transition-colors duration-300 hover:bg-main/85"
             >
               {activeIndex === index && (
                 <motion.div
                   layoutId="sidebar-active"
-                  className="absolute inset-0 bg-black/15 rounded-xl"
+                  className="absolute inset-0 rounded-xl bg-main/95"
                   transition={{
                     type: "spring",
                     stiffness: 350,
@@ -46,15 +46,15 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon={item.icon}
                 className={`relative z-10 text-xl transition-transform duration-300 ${
-                  activeIndex === index ? "scale-110" : "scale-100"
+                  activeIndex === index ? "text-light" : ""
                 }`}
               />
             </button>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
