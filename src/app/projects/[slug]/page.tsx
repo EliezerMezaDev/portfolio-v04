@@ -72,7 +72,7 @@ function ScrollDownButton() {
   }
 
   return (
-    <div className="fixed right-0 bottom-5 left-0 mb-10 flex items-center justify-center">
+    <div className="fixed right-0 bottom-5 left-0 flex items-center justify-center md:mb-10">
       <motion.div
         className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-900"
         whileHover={{ scale: 1.1 }}
@@ -147,7 +147,7 @@ function Page(props: { params: Promise<{ slug: string }> }) {
       </button>
       <ScrollDownButton />
       <div className="flex min-h-screen flex-col items-start justify-center">
-        <div className="mb-10">
+        <div className="mb-4 md:mb-10">
           <p className="text-base tracking-[8px] text-dark uppercase">
             Proyecto
           </p>
@@ -156,8 +156,8 @@ function Page(props: { params: Promise<{ slug: string }> }) {
           </h1>
         </div>
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-2">
-          <div className="flex min-h-screen flex-col items-start justify-center space-y-10 sm:min-h-0">
+        <div className="flex w-full flex-col-reverse max-sm:gap-4 md:grid md:grid-cols-2">
+          <div className="flex flex-col items-start justify-center space-y-4 sm:min-h-0 md:space-y-10">
             <div>
               <p className="text-base tracking-[8px] text-dark uppercase">
                 Stack
@@ -204,7 +204,7 @@ function Page(props: { params: Promise<{ slug: string }> }) {
               </div>
             )}
           </div>
-          <div className="mb-5 flex flex-col items-start justify-start">
+          <div className="flex flex-col items-start justify-start">
             <h2 className="text-base tracking-[8px] text-dark uppercase">
               Descripción
             </h2>

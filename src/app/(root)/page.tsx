@@ -110,7 +110,7 @@ const PageContentSection = ({
         </div>
         <div className="absolute top-[60%] z-10 col-span-2 flex w-full flex-col items-start justify-center px-10 py-5 text-start md:top-1/3 md:left-[10%] md:w-auto md:items-start">
           <motion.h2
-            className="bg-opacity-50 mb-2 bg-light text-5xl font-bold text-main max-md:p-2 md:text-7xl lg:bg-transparent lg:text-8xl"
+            className="bg-opacity-50 mb-2 bg-light-2 text-5xl font-bold text-main max-md:p-2 md:text-7xl lg:bg-transparent lg:text-8xl"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{
