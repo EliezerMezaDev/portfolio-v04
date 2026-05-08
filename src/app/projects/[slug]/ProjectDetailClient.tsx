@@ -18,12 +18,22 @@ interface ProjectWithTechNames extends Project {
   techNames: string[]
 }
 
-function ProjectImage({ src, alt, index }: { src: string; alt: string; index: number }) {
+function ProjectImage({
+  src,
+  alt,
+  index,
+}: {
+  src: string
+  alt: string
+  index: number
+}) {
   const [loaded, setLoaded] = useState(false)
 
   return (
     <div className="relative mx-auto mb-5 w-full max-w-7xl">
-      {!loaded && <div className="absolute inset-0 animate-pulse rounded bg-neutral-300" />}
+      {!loaded && (
+        <div className="absolute inset-0 animate-pulse rounded bg-neutral-300" />
+      )}
       <Image
         src={src}
         alt={alt}
@@ -43,9 +53,17 @@ function ScrollDownButton() {
   const [isAtBottom, setIsAtBottom] = useState(false)
 
   const handleScroll = () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-    if (scrollTop < document.documentElement.scrollHeight - document.documentElement.clientHeight) {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" })
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop
+    if (
+      scrollTop <
+      document.documentElement.scrollHeight -
+        document.documentElement.clientHeight
+    ) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      })
       setIsAtBottom(true)
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" })
@@ -61,7 +79,10 @@ function ScrollDownButton() {
         whileTap={{ scale: 0.9 }}
         onClick={handleScroll}
       >
-        <FontAwesomeIcon icon={isAtBottom ? faChevronUp : faChevronDown} className="text-2xl text-white" />
+        <FontAwesomeIcon
+          icon={isAtBottom ? faChevronUp : faChevronDown}
+          className="text-2xl text-white"
+        />
       </motion.div>
     </div>
   )
@@ -71,7 +92,9 @@ interface ProjectDetailClientProps {
   project: ProjectWithTechNames
 }
 
-export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
+export default function ProjectDetailClient({
+  project,
+}: ProjectDetailClientProps) {
   const router = useRouter()
 
   return (
@@ -86,35 +109,66 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
       <ScrollDownButton />
 
       <div className="flex min-h-screen flex-col items-start justify-center">
-        <div className="mb-4 md:mb-10">
-          <p className="text-base tracking-[8px] text-dark uppercase">Proyecto</p>
-          <h1 className="text-5xl font-bold text-main md:mb-2 md:text-7xl">{project.title}</h1>
-        </div>
-
-        <div className="flex w-full flex-col-reverse max-sm:gap-4 md:grid md:grid-cols-2">
+        <div className="flex w-full flex-col-reverse items-start max-sm:gap-4 md:grid md:grid-cols-[1fr_2fr]">
           <div className="flex flex-col items-start justify-center space-y-4 sm:min-h-0 md:space-y-10">
+            <div className="">
+              <p className="text-base tracking-[8px] text-dark uppercase">
+                Proyecto
+              </p>
+              <h1 className="text-5xl font-bold text-main md:mb-2 md:text-7xl">
+                {project.title}
+              </h1>
+            </div>
+
             <div>
-              <p className="text-base tracking-[8px] text-dark uppercase">Stack</p>
-              <h2 className="text-2xl text-darken">{project.techNames.join(", ")}</h2>
+              <p className="text-base tracking-[8px] text-dark uppercase">
+                Rol
+              </p>
+              <h2 className="text-2xl text-darken lg:text-4xl">
+                {project.role}
+              </h2>
             </div>
             <div>
-              <p className="text-base tracking-[8px] text-dark uppercase">Fecha</p>
-              <h2 className="text-2xl text-darken">{project.year}</h2>
+              <p className="text-base tracking-[8px] text-dark uppercase">
+                Stack
+              </p>
+              <h2 className="text-2xl text-darken lg:text-4xl">
+                {project.techNames.join(", ")}
+              </h2>
+            </div>
+            <div>
+              <p className="text-base tracking-[8px] text-dark uppercase">
+                Fecha
+              </p>
+              <h2 className="text-2xl text-darken lg:text-4xl">
+                {project.date}
+              </h2>
             </div>
             {(project.preview || project.code) && (
               <div>
-                <p className="text-base tracking-[8px] text-dark uppercase">Enlances</p>
+                <p className="text-base tracking-[8px] text-dark uppercase">
+                  Enlances
+                </p>
                 <div className="flex gap-6">
                   {project.preview && (
-                    <p className="text-2xl text-darken">
-                      <a href={project.preview} target="_blank" rel="noopener noreferrer">
-                        Preview <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    <p className="text-2xl text-darken lg:text-4xl">
+                      <a
+                        href={project.preview}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Preview{" "}
+                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                       </a>
                     </p>
                   )}
                   {project.code && (
-                    <p className="text-2xl text-darken">
-                      <a href={project.code} target="_blank" rel="noopener noreferrer">
+                    <p className="text-2xl text-darken lg:text-4xl">
+                      <a
+                        href={project.code}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         Github <FontAwesomeIcon icon={faGithub} />
                       </a>
                     </p>
@@ -124,9 +178,13 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             )}
           </div>
           <div className="flex flex-col items-start justify-start">
-            <h2 className="text-base tracking-[8px] text-dark uppercase">Descripcion</h2>
-            <div className="prose prose-xl text-justify tracking-wide text-light-5">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{project.content}</ReactMarkdown>
+            <h2 className="text-base tracking-[8px] text-dark uppercase">
+              Descripcion
+            </h2>
+            <div className="prose text-justify tracking-wide text-light-5">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {project.content}
+              </ReactMarkdown>
             </div>
           </div>
         </div>
@@ -135,7 +193,12 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
       <div className="mx-auto grid w-full grid-cols-1 p-5 md:p-20">
         <div className="flex h-auto w-full flex-col justify-center text-center">
           {project.images.map((image, index) => (
-            <ProjectImage key={index} src={image} alt={`Project Image ${index + 1}`} index={index} />
+            <ProjectImage
+              key={index}
+              src={image}
+              alt={`Project Image ${index + 1}`}
+              index={index}
+            />
           ))}
         </div>
       </div>
