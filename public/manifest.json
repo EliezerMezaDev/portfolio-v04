@@ -1,0 +1,16 @@
+{
+  "name": "EaMZ Portfolio",
+  "short_name": "EaMZ",
+  "description": "Portfolio of Eliezer A Meza - Frontend Engineer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a1a1a",
+  "icons": [
+    {
+      "src": "/og-image-square.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}
