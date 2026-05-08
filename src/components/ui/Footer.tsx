@@ -1,17 +1,17 @@
-"use client";
-import { motion } from "framer-motion";
-import Link from "next/link";
+"use client"
+import { motion } from "framer-motion"
+import Link from "next/link"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowAltCircleRight } from "@fortawesome/free-regular-svg-icons"
 
 export default function Footer() {
   return (
-    <div className="flex justify-center items-center flex-col mt-5 overflow-hidden">
-      <div className="flex justify-center items-center flex-col mt-5 self-center min-h-[75vh] border-b-2 min-w-[80vw] ">
+    <div className="mt-5 flex flex-col items-center justify-center overflow-hidden">
+      <div className="mt-5 flex min-h-[75vh] min-w-[80vw] flex-col items-center justify-center self-center border-b-2">
         <Link href="/#contact">
           <motion.h5
-            className="text-xl font-medium mt-3 text-center text-light-4  hover:underline whitespace-nowrap leading-none md:tracking-[0.5rem]"
+            className="mt-3 text-center text-xl leading-none font-medium whitespace-nowrap text-light-5 hover:underline md:tracking-[0.5rem]"
             initial={{
               opacity: 0,
               x: -100,
@@ -27,7 +27,7 @@ export default function Footer() {
             ¿Quieres algo como esto?
           </motion.h5>
           <motion.h4
-            className="text-black text-4xl md:text-7xl font-medium mt-3 hover:underline whitespace-nowrap leading-none"
+            className="mt-3 text-4xl leading-none font-medium whitespace-nowrap text-black hover:underline md:text-7xl"
             initial={{
               opacity: 0,
               x: 100,
@@ -43,17 +43,17 @@ export default function Footer() {
             Ponte en contacto{" "}
             <FontAwesomeIcon
               icon={faArrowAltCircleRight}
-              className="text-4xl md:text-5xl max-md:-mb-1 ml-2 "
+              className="ml-2 text-4xl max-md:-mb-1 md:text-5xl"
             />
           </motion.h4>
         </Link>
       </div>
-      <footer className="flex justify-center items-center flex-col my-5 self-start]">
-        <p className="text-black text-sm">
+      <footer className="self-start] my-5 flex flex-col items-center justify-center">
+        <p className="text-sm text-black">
           &copy;{new Date().getFullYear()} -{" "}
-          <span className="text-black text-lg">Eliezer A Meza</span>
+          <span className="text-lg text-black">Eliezer A Meza</span>
         </p>
       </footer>
     </div>
-  );
+  )
 }

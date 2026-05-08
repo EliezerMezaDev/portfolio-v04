@@ -1,9 +1,9 @@
-import { cn } from "@lib/utils";
+import { cn } from "@lib/utils"
 
 interface CodeEffectProps {
-  children: React.ReactNode;
-  className?: string;
-  symbolClassName?: string;
+  children: React.ReactNode
+  className?: string
+  symbolClassName?: string
 }
 
 export const CodeEffect = ({
@@ -14,7 +14,7 @@ export const CodeEffect = ({
   return (
     <span className={cn("inline-flex items-center tracking-wide", className)}>
       <span
-        className={cn("select-none hidden lg:block", symbolClassName)}
+        className={cn("hidden select-none lg:block", symbolClassName)}
         aria-hidden="true"
       >
         &lt;
@@ -23,11 +23,11 @@ export const CodeEffect = ({
       {children}
 
       <span
-        className={cn("select-none hidden lg:block ml-0.5", symbolClassName)}
+        className={cn("ml-0.5 hidden select-none lg:block", symbolClassName)}
         aria-hidden="true"
       >
         /&gt;
       </span>
     </span>
-  );
-};
+  )
+}
