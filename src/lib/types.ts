@@ -17,8 +17,10 @@ export interface TechnologyData {
 export interface ProjectFrontmatter {
   title: string
   slug: string
-  year: string
+  date: string
   show: boolean
+  own: boolean
+  role: string
   preview?: string
   code?: string
   thumbnail: string

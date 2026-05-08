@@ -1,11 +1,4 @@
-{
-  "categories": [
-    { "id": "frontend", "name": "Frontend" },
-    { "id": "backend", "name": "Backend" },
-    { "id": "mobile", "name": "Mobile" },
-    { "id": "database", "name": "Database" },
-    { "id": "tools", "name": "Tools/DevOps" }
-  ],
+{  
   "technologies": [
     { "id": "nextjs", "name": "Next.js", "category": "frontend" },
     { "id": "react", "name": "React", "category": "frontend" },
