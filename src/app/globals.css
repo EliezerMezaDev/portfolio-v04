@@ -1,86 +1,78 @@
 @import "tailwindcss";
 
 :root {
-	--base-darken: #011d2f;
-	--base-dark: #042a42;
-	--base: #04304c;
-	--base-light: #034e7e;
+  --main: #f79b23;
+  --main-alt: #fa9128;
+  --main-dark: #c87821;
 
-	--main: #0474ba;
-	--main-light: #00a7e1;
+  --dark: #514c48;
+  --darken: #1c1713;
+  
 
-	--accent: #F79B23;
-	--accent-alt: #fa9128;
-
-	/* FOR TEXT */
-	--light: #f5f5f5;
-	--light-2: #F0ECE5;
-	--light-3: #D6D1C2;
-	--light-4: #A5A29A;
-	--light-5: #767369;
+  /* FOR TEXT */
+  --light: #f5f5f5;
+  --light-2: #f0ece5;
+  --light-3: #d6d1c2;
+  --light-4: #a5a29a;
+  --light-5: #767369;
 }
 
 @theme {
-	/* ----- COLORS ----- */
-	/* FOR LAYOUT */
-	--color-base-darken: var(--base-darken);
-	--color-base-dark: var(--base-dark);
-	--color-base: var(--base);
-	--color-base-light: var(--base-light);
+  /* ----- COLORS ----- */
+  /* FOR LAYOUT */
 
-	--color-main: var(--main);
-	--color-main-light: var(--main-light);
+  --color-main: var(--main);
+  --color-main-alt: var(--main-alt);
+  --color-main-dark: var(--main-dark);
 
-	--color-accent: var(--accent);
-	--color-accent-alt: var(--accent-alt);
+  --color-dark: var(--dark);
 
-	/* FOR TEXT */
-	--color-light: var(--light);
-	--color-light-2: var(--light-2);
-	--color-light-3: var(--light-3);
-	--color-light-4: var(--light-4);
-	--color-light-5: var(--light-5);
+  /* FOR TEXT */
+  --color-light: var(--light);
+  --color-light-2: var(--light-2);
+  --color-light-3: var(--light-3);
+  --color-light-4: var(--light-4);
+  --color-light-5: var(--light-5);
 }
 
 @layer {
-	b {
-		@apply font-semibold text-black/85;
-	}
+  b {
+    @apply font-semibold text-dark;
+  }
 
-
-	.container {
-		@apply max-w-[90%] w-full xl:w-[80%] mx-auto;
-	}
+  .container {
+    @apply max-w-[90%] w-full xl:w-[80%] mx-auto;
+  }
 }
 
 html {
-	font-size: clamp(13px, 0.89vw, 17px) !important;
+  font-size: clamp(13px, 0.89vw, 17px) !important;
 }
 
 body {
-	font-family: var(--font-poppins), sans-serif !important;
-	color: #000;
-	background-color: var(--color-light);
+  font-family: var(--font-poppins), sans-serif !important;
+  color: var(--color-dark);
+  background-color: var(--color-light-2);
 }
 
 /* Hide scrollbar only for fullpage scroll pages */
 body.fullpage-active {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 body.fullpage-active::-webkit-scrollbar,
 html:has(body.fullpage-active)::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 body.fullpage-active,
 html:has(body.fullpage-active) {
-	-ms-overflow-style: none;
-	/* IE and Edge */
-	scrollbar-width: none;
-	/* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 h1,
@@ -89,22 +81,22 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-jost), sans-serif !important;
+  font-family: var(--font-jost), sans-serif !important;
 }
 
 .title {
-	font-family: var(--font-jost), sans-serif !important;
+  font-family: var(--font-jost), sans-serif !important;
 }
 
 .section {
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar {
-	z-index: 49 !important;
+  z-index: 49 !important;
 }
 
 /* h2, h3, h4, h5, h6 {
@@ -112,45 +104,43 @@ h6 {
 } */
 
 span {
-	font-family: var(--font-jost), sans-serif;
+  font-family: var(--font-jost), sans-serif;
 }
 
 li {
-	@apply list-none relative;
+  @apply list-none relative;
 }
-
 
 td,
 th {
-	@apply py-2 px-3;
+  @apply py-2 px-3;
 }
 
 a[title]:hover:after {
-	margin-left: -100px;
-	margin-top: -50px;
-	position: absolute;
-	content: attr(title);
-	padding: 0.5rem;
-	white-space: nowrap;
-	z-index: 1;
-	background-color: #333333;
-	color: #fff;
-	border-radius: 4px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	font-size: 0.8rem;
+  margin-left: -100px;
+  margin-top: -50px;
+  position: absolute;
+  content: attr(title);
+  padding: 0.5rem;
+  white-space: nowrap;
+  z-index: 1;
+  background-color: #333333;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 0.8rem;
 }
 
 ::selection {
-	background: #ffa630;
-	color: #fff;
+  background: #ffa630;
+  color: #fff;
 }
 
-
 .overlay {
-	background-color: rgba(0, 0, 0, 0.5);
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
-	-moz-backdrop-filter: blur(5px);
-	-o-backdrop-filter: blur(5px);
-	-ms-backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  -moz-backdrop-filter: blur(5px);
+  -o-backdrop-filter: blur(5px);
+  -ms-backdrop-filter: blur(5px);
 }
