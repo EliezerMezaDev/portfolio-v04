@@ -16,7 +16,7 @@ export function getAllProjects(): (Project & { techNames: string[] })[] {
     return { ...(data as ProjectFrontmatter), content }
   })
 
-  return projects.sort((a, b) => Number(b.year) - Number(a.year)).map(attachTechNamesToProject)
+  return projects.sort((a, b) => Number(b.date) - Number(a.date)).map(attachTechNamesToProject)
 }
 
 export function getProjectBySlug(slug: string): (Project & { techNames: string[] }) | null {
