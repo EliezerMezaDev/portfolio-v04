@@ -11,7 +11,7 @@
 	--color-main: #0474ba;
 	--color-main-light: #00a7e1;
 
-	--color-accent: #ffa630;
+	--color-accent: #F79B23;
 	--color-accent-alt: #fa9128;
 
 	/* FOR TEXT */
@@ -22,13 +22,24 @@
 	--color-light-5: #767369;
 }
 
+@layer {
+	b {
+		@apply font-semibold text-black/85;
+	}
+
+
+	.container {
+		@apply max-w-[90%] w-full xl:w-[80%] mx-auto;
+	}
+}
+
 html {
 	font-size: clamp(13px, 0.89vw, 17px) !important;
 }
 
 body {
 	font-family: var(--font-poppins), sans-serif !important;
-	color: var(--color-base-darken);
+	color: #000;
 	background-color: var(--color-light);
 }
 
@@ -113,6 +124,7 @@ a[title]:hover:after {
 	background: #ffa630;
 	color: #fff;
 }
+
 
 .overlay {
 	background-color: rgba(0, 0, 0, 0.5);

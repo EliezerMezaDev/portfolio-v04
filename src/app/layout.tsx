@@ -21,21 +21,25 @@ const jost = Jost({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://www.EaMZ.my.id"),
+  metadataBase: new URL("https://eamz.netlify.app/"),
   title: "EaMZ | Portofolio",
 
   description:
-    "Alvalen, Product-Minded Software Engineer specializing in Next.js, Spring Boot, and AI Solutions. Founder & CTO of Intervyou.",
+    "My name is Eliezer A Meza, This is my portofolio website.",
 
   author: "Eliezer A Meza",
-  siteUrl: "https://www.EaMZ.my.id",
+  siteUrl: "https://eamz.netlify.app/",
   applicationName: "EaMZ",
+
+  icons: {
+    icon: '/favicon.svg',
+  },
 
   keywords: ["EaMZ"],
 
   openGraph: {
     type: "website",
-    url: "https://www.EaMZ.my.id",
+    url: "https://eamz.netlify.app/",
     title: "EaMZ | Portofolio",
     siteName: "EaMZ | Portofolio",
     description: "My name is Eliezer A Meza, This is my portofolio website.",
@@ -54,10 +58,10 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Eliezer A Meza",
-  url: "https://www.EaMZ.my.id",
+  url: "https://eamz.netlify.app/",
   jobTitle: "Fullstack developer",
   sameAs: [
-    "https://github.com/EaMZ",
+    "https://github.com/EliezerMezaDev/",
     "https://www.linkedin.com/in/eliezer-a-meza-7a1b882b9/",
   ],
 };
