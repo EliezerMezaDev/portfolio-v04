@@ -26,6 +26,7 @@
   --color-main-dark: var(--main-dark);
 
   --color-dark: var(--dark);
+  --color-darken: var(--darken);
 
   /* FOR TEXT */
   --color-light: var(--light);
