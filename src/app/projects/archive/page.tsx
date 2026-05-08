@@ -67,7 +67,7 @@ export default function Page() {
                 type: "spring",
               }}
             >
-              Archive
+              Archivos
             </motion.h1>
           </div>
 
@@ -75,19 +75,16 @@ export default function Page() {
             {/* invisible table */}
             <table className="space-y-3">
               <thead>
-                <tr className="ease transition-all duration-500 hover:shadow-md">
-                  <th className="text-start">Year</th>
-                  <th className="text-start">Title</th>
-                  <th className="text-start">Technology</th>
-                  <th className="text-start">Link</th>
+                <tr className="ease transition-all duration-500">
+                  <th className="text-start">Fecha</th>
+                  <th className="text-start">Proyecto</th>
+                  <th className="text-start">Stack</th>
+                  <th className="text-start">Enlances</th>
                 </tr>
               </thead>
               <tbody>
                 {projects.map((project, index) => (
-                  <tr
-                    key={index}
-                    className="ease transition-all duration-500 hover:shadow-md"
-                  >
+                  <tr key={index} className="ease transition-all duration-500">
                     <td>{project.year}</td>
                     <td>
                       <Link href={`/projects/${project.slug}`}>
@@ -96,9 +93,9 @@ export default function Page() {
                     </td>
                     <td>{project.tech.map((t) => `${t}, `)}</td>
                     <td>
-                      <div className="flex flex-row items-center justify-center">
+                      <div className="flex flex-row items-center justify-start">
                         {project.code && (
-                          <a href={project.code} title="Link to GitHub">
+                          <a href={project.code} title="Ver en GitHub">
                             <FontAwesomeIcon
                               icon={faGithub}
                               className="mr-2 text-xl"
@@ -108,7 +105,7 @@ export default function Page() {
                         {project.preview && (
                           <a
                             href={project.preview}
-                            title="Link to project preview"
+                            title="Ver proyecto"
                           >
                             <FontAwesomeIcon
                               icon={faArrowUpRightFromSquare}

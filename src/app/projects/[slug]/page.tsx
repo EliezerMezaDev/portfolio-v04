@@ -146,74 +146,72 @@ function Page(props: { params: Promise<{ slug: string }> }) {
         <FontAwesomeIcon icon={faChevronLeft} className="pr-10 text-black" />
       </button>
       <ScrollDownButton />
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="mx-auto mt-10 grid grid-cols-1 md:mt-0 md:grid-cols-2">
-          <div className="mx-auto mb-5 flex min-h-screen flex-col items-start justify-center space-y-10 sm:min-h-0">
+      <div className="flex min-h-screen flex-col items-start justify-center">
+        <div className="mb-10">
+          <p className="text-base tracking-[8px] text-dark uppercase">
+            Proyecto
+          </p>
+          <h1 className="text-5xl font-bold text-main md:mb-2 md:text-7xl">
+            {data.title}
+          </h1>
+        </div>
+
+        <div className="w-full grid grid-cols-1 md:grid-cols-2">
+          <div className="flex min-h-screen flex-col items-start justify-center space-y-10 sm:min-h-0">
             <div>
-              <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
-                Project
-              </h2>
-              <h1 className="text-4xl font-medium text-neutral-900">
-                {data.title}
-              </h1>
-            </div>
-            <div>
-              <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
-                Technology
-              </h2>
-              <p className="text-2xl font-normal text-neutral-900">
-                {data.tech.join(", ")}
+              <p className="text-base tracking-[8px] text-dark uppercase">
+                Stack
               </p>
+              <h2 className="text-2xl text-darken">{data.tech.join(", ")}</h2>
             </div>
             <div>
-              <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
-                Year
-              </h2>
-              <p className="text-2xl font-normal text-neutral-900">
-                {data.year}
+              <p className="text-base tracking-[8px] text-dark uppercase">
+                Fecha
               </p>
+              <h2 className="text-2xl text-darken">{data.year}</h2>
             </div>
-            {data.preview && (
+            {(data.preview || data.code) && (
               <div>
-                <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
-                  Preview
-                </h2>
-                <p className="text-2xl font-normal text-neutral-900">
-                  <a
-                    href={data.preview}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Preview{" "}
-                    <FontAwesomeIcon
-                      icon={faArrowUpRightFromSquare}
-                      className="ml-3"
-                    />
-                  </a>
+                <p className="text-base tracking-[8px] text-dark uppercase">
+                  Enlances
                 </p>
-              </div>
-            )}
-            {data.code && (
-              <div>
-                <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
-                  Source Code
-                </h2>
-                <p className="text-2xl font-normal text-neutral-900">
-                  <a href={data.code} target="_blank" rel="noopener noreferrer">
-                    Github <FontAwesomeIcon icon={faGithub} className="ml-3" />
-                  </a>
-                </p>
+                <div className="flex gap-6">
+                  {data.preview && (
+                    <p className="text-2xl text-darken">
+                      <a
+                        href={data.preview}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Preview{" "}
+                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                      </a>
+                    </p>
+                  )}
+
+                  {data.code && (
+                    <p className="text-2xl text-darken">
+                      <a
+                        href={data.code}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Github <FontAwesomeIcon icon={faGithub} />
+                      </a>
+                    </p>
+                  )}
+                </div>
               </div>
             )}
           </div>
           <div className="mb-5 flex flex-col items-start justify-start">
-            <h2 className="text-lg font-normal tracking-[8px] text-neutral-400 uppercase">
-              Description
+            <h2 className="text-base tracking-[8px] text-dark uppercase">
+              Descripción
             </h2>
             {data.desc.map((desc: string, index: number) => (
               <p
                 key={index}
-                className="mb-5 text-justify text-xl font-normal tracking-wide text-light-5"
+                className="mb-5 text-justify text-xl tracking-wide text-light-5"
               >
                 {desc}
               </p>

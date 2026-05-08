@@ -18,14 +18,14 @@ import Hightlight from "@components/projects/Hightlight"
 import { CodeEffect } from "@components/ui/CodeEffect"
 import Hero from "@components/ui/Hero"
 
-const categories = [
+const categories: { id: number; label: string }[] = [
   { id: 1, label: "Desarrollo Web" },
   { id: 2, label: "Mobile" },
   { id: 3, label: "Otro" },
 ]
 
 export default function Page() {
-  const [activeCategory, setActiveCategory] = useState(1)
+  const [activeCategory, setActiveCategory] = useState<number>(1)
   const projects = Projects.Projects.filter((item) => item.show === true)
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Page() {
                 type: "spring",
               }}
             >
-              Otros proyectos destacados
+              Otros proyectos
             </motion.h1>
           </div>
         </div>
@@ -84,19 +84,18 @@ export default function Page() {
           }}
           className="my-5 flex flex-row flex-wrap items-start justify-center gap-3 md:gap-5"
         >
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              className={`ease cursor-pointer rounded-lg px-2 py-2 transition-all duration-300 focus:bg-gray-300 focus:text-black focus:ring focus:ring-slate-500 md:px-4 ${
-                activeCategory === category.id
-                  ? "bg-gray-300 text-black hover:bg-gray-700 hover:text-white"
-                  : "bg-gray-700 text-white hover:bg-gray-300 hover:text-black"
-              }`}
-              onClick={() => setActiveCategory(category.id)}
-            >
-              {category.label}
-            </button>
-          ))}
+          {categories.map((category, index) => {
+            const isActive = activeCategory === category.id
+            return (
+              <Button
+                key={index}
+                variation={isActive ? "primary" : "secondary"}
+                onClick={() => !isActive && setActiveCategory(category.id)}
+              >
+                {category.label}
+              </Button>
+            )
+          })}
         </motion.div>
 
         {/* projects */}
@@ -121,9 +120,9 @@ export default function Page() {
           }}
           className="my-5 flex flex-col items-center justify-center self-start"
         >
-          <Button variation="primary">
-            <Link href="projects/archive">Ver en el archivo</Link>
-          </Button>
+          <Link href="projects/archive" className="hover:underline">
+            Ver en el archivo
+          </Link>
         </motion.div>
       </main>
     </>
