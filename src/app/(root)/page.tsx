@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
@@ -22,10 +22,11 @@ import Hr from "@components/ui/Hr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { CodeEffect } from "@components/ui/CodeEffect";
+import {
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 
-function ScrollIndicator() {
+const ScrollIndicator = () => {
   const { activeIndex } = useFullPage();
   const [dismissed, setDismissed] = useState(false);
 
@@ -62,49 +63,133 @@ function ScrollIndicator() {
       )}
     </AnimatePresence>
   );
-}
+};
 
-const MyPage = () => {
+const PageContentSection = ({
+  image,
+  title,
+  buttons,
+  content,
+}: {
+  image: StaticImageData;
+  title: string;
+  content: React.ReactNode;
+  buttons: React.ReactNode;
+}) => {
   return (
-    <FullPageWrapper>
-      <Section>
-        <div className="ml-20 w-[82%] max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 p-10 overflow-hidden">
+    <Section>
+      <div className="relative md:h-screen w-screen gap-4 flex justify-center items-center flex-col overflow-hidden">
+        <div className="z-0 mb-48 md:mb-0  md:absolute md:top-1/2  md:right-[10%] md:-translate-y-1/2">
           <motion.div
-            className="col-span-2 flex flex-col justify-center items-center md:items-start text-center md:text-start"
+            className="relative bg-light rounded-sm h-[400px] md:h-[60vh] w-[80vw] md:w-[30vw] grayscale hover:grayscale-0"
+            initial={{
+              x: 300,
+              opacity: 0,
+              z: -100,
+            }}
+            whileInView={{
+              x: 0,
+              opacity: 1,
+              z: 0,
+            }}
+            transition={{
+              delay: 0.5,
+              type: "spring",
+              stiffness: 100,
+              damping: 20,
+            }}
+          >
+            <Image
+              src={image}
+              fill
+              sizes="(max-width: 768px) 80vw, 30vw"
+              className="object-cover"
+              alt="EaMZ"
+              placeholder="blur"
+            />
+          </motion.div>
+        </div>
+        <div className="z-10 w-full absolute md:w-auto  md:left-[10%] top-[60%] md:top-1/3 col-span-2 flex flex-col justify-center items-start md:items-start text-start px-10 py-5">
+          <motion.h2
+            className="mb-2 text-5xl md:text-7xl lg:text-8xl bg-light lg:bg-transparent max-md:p-2 bg-opacity-50 text-main font-bold"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{
+              delay: 0.1,
               type: "spring",
             }}
           >
-            <div className="block md:hidden col-span-1 mx-auto my-10">
-              <div className="bg-slate-500 rounded-full h-60 w-60 grayscale hover:grayscale-0 transition-all ease duration-300">
-                <Image
-                  src={Me}
-                  width={500}
-                  height={500}
-                  className="rounded-full w-full h-full object-cover "
-                  alt="EaMZ"
-                  placeholder="blur"
-                />
-              </div>
-            </div>
-            <motion.h3
-              className="uppercase text-xl mb-3 font-normal text tracking-[.5rem] text-light-4"
+            {title}
+          </motion.h2>
+
+          <Hr />
+          <motion.p
+            className="title text-xl tracking-wider text-light-4 leading-[1.7rem] mt-2 lg:mt-4 mb-4 lg:mb-10"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{
+              delay: 0.2,
+              type: "spring",
+            }}
+          >
+            {content}
+          </motion.p>
+          <motion.div
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{
+              delay: 0.3,
+              type: "spring",
+            }}
+          >
+            {buttons}
+          </motion.div>
+        </div>
+      </div>
+    </Section>
+  );
+};
+
+export default function RootPage() {
+  return (
+    <>
+      <FullPageWrapper>
+        <Section>
+          <div className="w-[86%] max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 p-4 md:p-10 overflow-hidden">
+            <motion.div
+              className="col-span-2 flex flex-col justify-center items-center md:items-start text-center md:text-start"
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{
-                delay: 0.2,
                 type: "spring",
               }}
             >
-              Eliezer A Meza
-            </motion.h3>
-            <CodeEffect
-              className="mb-2 md:mb-5 text-5xl md:text-7xl"
-              symbolClassName="text-black/10"
-              children={<motion.h1
-                className="text-accent font-bold "
+              <div className="block md:hidden col-span-1 mx-auto my-10">
+                <div className="bg-slate-500 rounded-full h-60 w-60 transition-all ease duration-300 ">
+                  <Image
+                    src={Me}
+                    width={500}
+                    height={500}
+                    className="rounded-full w-full h-full object-cover"
+                    alt="EaMZ"
+                    placeholder="blur"
+                  />
+                </div>
+              </div>
+              <motion.h3
+                className="uppercase text-xl mb-3 font-normal text tracking-[.5rem] text-light-4"
+                initial={{ x: -100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.2,
+                  type: "spring",
+                }}
+              >
+                Eliezer A Meza
+              </motion.h3>
+
+              <motion.h1
+                className="text-accent md:mb-2 text-5xl md:text-7xl lg:text-8xl font-bold "
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -112,132 +197,81 @@ const MyPage = () => {
                   type: "spring",
                 }}
               >
-                FullstackDeveloper </motion.h1>
-              }
-            />
+                Eliezer A Meza{" "}
+              </motion.h1>
 
-
-            <motion.p
-              className="title text-md 2xl:text-xl mt-4 tracking-wider text-light-4 leading-[1.7rem]"
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{
-                delay: 0.4,
-                type: "spring",
-              }}
-            >
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Quibusdam, temporibus!
-            </motion.p>
-            <motion.div
-              className="buttons flex flex-row justify-center items-center space-x-4 mt-10"
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{
-                delay: 0.5,
-                type: "spring",
-              }}
-            >
-              <Button variation="primary">
-                <Link
-                  href={"/docs/cv.pdf"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                >
-                  Descargar CV
-                </Link>
-              </Button>
-              <Button variation="secondary">
-                <a href="#contact">Contáctame</a>
-              </Button>
+              <motion.p
+                className="title text-md 2xl:text-xl mt-4 tracking-wider text-light-4 leading-[1.7rem]"
+                initial={{ x: -100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.4,
+                  type: "spring",
+                }}
+              >
+                +5 años desarrollando en entornos Fintech, construyendo
+                arquitecturas escalables basadas en Next.js, Flutter y Node.js.
+                Enfocado en optimizar el rendimiento y la seguridad en sistemas
+                transaccionales.
+              </motion.p>
+              <motion.div
+                className="buttons flex flex-row justify-center items-center space-x-4 mt-4 lg:mt-10"
+                initial={{ x: -100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.5,
+                  type: "spring",
+                }}
+              >
+                <Button variation="primary">
+                  <Link
+                    href={"/docs/cv.pdf"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                  >
+                    Descargar CV
+                  </Link>
+                </Button>
+                <Button variation="secondary">
+                  <a href="#contact">Contáctame</a>
+                </Button>
+              </motion.div>
             </motion.div>
-          </motion.div>
-          <motion.div
-            className="hidden md:flex col-span-1 mx-auto justify-center items-center "
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{
-              delay: 0.7,
-              type: "spring",
-            }}
-          >
-            <div className="rounded-full h-auto w-auto max-w-[20vw] bg-red-500  transition-all ease duration-300">
-              <Image
-                src={Me}
-                width={400}
-                height={550}
-                placeholder="blur"
-                alt="EaMZ"
-                className="rounded-full w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </Section>
-      <Section>
-        <div className="relative md:h-screen w-screen gap-4 flex justify-center items-center flex-col overflow-hidden">
-          <div className="z-0 mb-48 md:mb-0  md:absolute md:top-1/2  md:right-[10%] md:-translate-y-1/2">
             <motion.div
-              className="relative bg-slate-300 rounded-sm h-[400px] md:h-[60vh] w-[80vw] md:w-[30vw] grayscale hover:grayscale-0"
-              initial={{
-                x: 300,
-                opacity: 0,
-                z: -100,
-              }}
-              whileInView={{
-                x: 0,
-                opacity: 1,
-                z: 0,
-              }}
+              className="hidden md:flex col-span-1 mx-auto justify-center items-center "
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
               transition={{
-                delay: 0.5,
+                delay: 0.7,
                 type: "spring",
-                stiffness: 100,
-                damping: 20,
               }}
             >
-              <Image
-                src={MeAbout}
-                fill
-                sizes="(max-width: 768px) 80vw, 30vw"
-                className="object-cover"
-                alt="EaMZ"
-                placeholder="blur"
-              />
+              <div className="rounded-full h-auto w-auto max-w-[20vw] transition-all ease duration-300">
+                <Image
+                  src={Me}
+                  width={400}
+                  height={550}
+                  placeholder="blur"
+                  alt="EaMZ"
+                  className="rounded-full w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
-          <div className="z-10 w-full absolute md:w-auto  md:left-[10%] top-[60%] md:top-1/3 col-span-2 flex flex-col justify-center items-start md:items-start text-start px-10 py-5">
-            <CodeEffect
-              className="mb-2 md:mb-5 text-5xl md:text-7xl"
-              symbolClassName="text-black/10"
-              children={
-                <motion.h2
-                  className="bg-white lg:bg-transparent bg-opacity-50 text-main font-bold"
-                  initial={{ x: -100, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{
-                    delay: 0.1,
-                    type: "spring",
-                  }}
-                >
-                  SobreMi
-                </motion.h2>
-              }
-            />
+        </Section>
 
-            <Hr />
-            <motion.p
-              className="title  text-xl mt-4 tracking-wider text-light-4 leading-[1.7rem] mb-5"
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{
-                delay: 0.2,
-                type: "spring",
-              }}
-            >
-              Una breve introducción a mi viaje como desarrollador de software.
-            </motion.p>
+        <PageContentSection
+          image={MeAbout}
+          title="Sobre mí"
+          content={
+            <>
+              Una breve introducción a mi viaje{" "}
+              <br className="hidden md:block lg:hidden" /> como desarrollador{" "}
+              <br className="hidden lg:block xl:hidden" /> de software.
+            </>
+          }
+          buttons={
             <motion.div
               initial={{ y: 40, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -250,75 +284,22 @@ const MyPage = () => {
                 <Link href="/about">Saber más</Link>
               </Button>
             </motion.div>
-          </div>
-        </div>
-      </Section>
-      <Section>
-        <div className="relative md:h-screen w-screen gap-4 p-10 flex justify-center items-center flex-col overflow-hidden">
-          <div className="z-0 mb-48 md:mb-0  md:absolute md:top-1/2  md:right-[10%] md:-translate-y-1/2">
-            <motion.div
-              className="relative bg-slate-300 rounded-sm h-[400px] md:h-[60vh] w-[80vw] md:w-[30vw] grayscale hover:grayscale-0"
-              initial={{
-                x: 300,
-                opacity: 0,
-                z: -100,
-              }}
-              whileInView={{
-                x: 0,
-                opacity: 1,
-                z: 0,
-              }}
-              transition={{
-                delay: 0.5,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-              }}
-            >
-              <Image
-                src={ProjectAll}
-                fill
-                sizes="(max-width: 768px) 80vw, 30vw"
-                className="object-cover"
-                alt="EaMZ Setup"
-                placeholder="blur"
-              />
-            </motion.div>
-          </div>
-          <div className="z-10 w-full absolute md:w-auto  md:left-[10%] top-[60%] md:top-1/3 col-span-2 flex flex-col justify-center items-start md:items-start text-start px-10 py-5">
-            <CodeEffect
-              className="mb-2 md:mb-5 text-5xl md:text-7xl"
-              symbolClassName="text-black/10"
-              children={
-                <motion.h2
-                  className="bg-white lg:bg-transparent bg-opacity-50 text-main font-bold"
-                  initial={{ x: -100, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{
-                    delay: 0.1,
-                    type: "spring",
-                  }}
-                >
-                  Proyectos
-                </motion.h2>
-              }
-            />
+          }
+        />
 
-            <Hr />
-            <motion.p
-              className="title  text-xl mt-4 tracking-wider text-light-4 leading-[1.7rem] mb-5"
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{
-                delay: 0.2,
-                type: "spring",
-              }}
-            >
-              Proyectos destacados que he creado a lo largo de los años. <br />
-              <span className="bg-transparent md:bg-black bg-opacity-50 xl:bg-transparent">
-                y en los que estoy trabajando actualmente.
-              </span>
-            </motion.p>
+        <PageContentSection
+          image={ProjectAll}
+          title="Proyectos"
+          content={
+            <>
+              Algunos proyectos que he creado a lo largo{" "}
+              <br className="hidden md:block lg:hidden" /> de los años{" "}
+              <br className="hidden lg:block xl:hidden" /> y en los que{" "}
+              <br className="hidden xl:block" /> estoy trabajando{" "}
+              <br className="hidden md:block lg:hidden" /> actualmente.
+            </>
+          }
+          buttons={
             <motion.div
               initial={{ y: 40, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -331,74 +312,19 @@ const MyPage = () => {
                 <Link href="/projects">Ver más</Link>
               </Button>
             </motion.div>
-          </div>
-        </div>
-      </Section>
-      <Section>
-        <div className="relative md:h-screen w-screen  gap-4 p-10 flex justify-center items-center flex-col overflow-hidden">
-          <div className="z-0 mb-48 md:mb-0  md:absolute md:top-1/2  md:right-[10%] md:-translate-y-1/2">
-            <motion.div
-              className="relative bg-slate-300 rounded-sm h-[400px] md:h-[60vh] w-[80vw] md:w-[30vw] grayscale hover:grayscale-0"
-              initial={{
-                x: 300,
-                opacity: 0,
-                z: -100,
-              }}
-              whileInView={{
-                x: 0,
-                opacity: 1,
-                z: 0,
-              }}
-              transition={{
-                delay: 0.5,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-              }}
-            >
-              <Image
-                src={Setup}
-                fill
-                sizes="(max-width: 768px) 80vw, 30vw"
-                className="object-cover"
-                alt="EaMZ Setup"
-                placeholder="blur"
-              />
-            </motion.div>
-          </div>
-          <div className="z-10 w-full absolute md:w-auto  md:left-[10%] top-[60%] md:top-1/3 col-span-2 flex flex-col justify-center items-start md:items-start text-start px-10 overflow-hidden">
-            <CodeEffect
-              className="mb-2 md:mb-5 text-5xl md:text-7xl"
-              symbolClassName="text-black/10"
-              children={
-                <motion.h2
-                  className="bg-white lg:bg-transparent bg-opacity-50 text-main font-bold"
-                  initial={{ x: -100, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{
-                    delay: 0.1,
-                    type: "spring",
-                  }}
-                >
-                  Contactame
-                </motion.h2>
-              }
-            />
+          }
+        />
 
-            <Hr />
-            <motion.p
-              className="title text-xl mt-4 tracking-wider text-light-4 leading-[1.7rem] md:mb-10"
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{
-                delay: 0.2,
-                type: "spring",
-              }}
-            >
-              No dudes en contactarme si tienes alguna idea o proyecto en mente.
-            </motion.p>
-
-            {/* icons */}
+        <PageContentSection
+          image={Setup}
+          title="Contacto"
+          content={
+            <>
+              No dudes en contactarme si tienes alguna idea{" "}
+              <br className="hidden md:block xl:hidden" /> o proyecto en mente.
+            </>
+          }
+          buttons={
             <div className="flex justify-center items-center space-x-4">
               <motion.a
                 href="mailto:eliezermeza.dev@gmail.com?subject=Hola&body=Hello Eliezer,"
@@ -446,12 +372,11 @@ const MyPage = () => {
                 <FontAwesomeIcon icon={faLinkedin} className="text-3xl" />
               </motion.a>
             </div>
-          </div>
-        </div>
-      </Section>
-      <ScrollIndicator />
-    </FullPageWrapper>
-  );
-};
+          }
+        />
 
-export default MyPage;
+        <ScrollIndicator />
+      </FullPageWrapper>
+    </>
+  );
+}
