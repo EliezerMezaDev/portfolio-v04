@@ -3,6 +3,9 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 module.exports = withBundleAnalyzer({
 	// your Next.js configuration
+
+	allowedDevOrigins: ["localhost", "192.168.100.138"],
+
 	images: {
 		remotePatterns: [
 			{
