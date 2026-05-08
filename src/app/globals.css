@@ -7,7 +7,6 @@
 
   --dark: #514c48;
   --darken: #1c1713;
-  
 
   /* FOR TEXT */
   --light: #f5f5f5;
@@ -42,7 +41,22 @@
   }
 
   .container {
-    @apply max-w-[90%] w-full xl:w-[80%] mx-auto;
+    @apply mx-auto w-full max-w-[90%] xl:w-[80%];
+  }
+
+  ul {
+    li {
+      margin-left: 1.5rem !important;
+      list-style: disc !important;
+    }
+  }
+
+  .prose {
+    @apply text-xl;
+
+    hr {
+      @apply border-none py-2;
+    }
   }
 }
 
@@ -109,12 +123,12 @@ span {
 }
 
 li {
-  @apply list-none relative;
+  @apply relative list-none;
 }
 
 td,
 th {
-  @apply py-2 px-3;
+  @apply px-3 py-2;
 }
 
 a[title]:hover:after {

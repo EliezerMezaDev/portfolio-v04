@@ -30,10 +30,6 @@ export const metadata = {
   siteUrl: "https://eamz.netlify.app/",
   applicationName: "EaMZ",
 
-  icons: {
-    icon: "/favicon.svg",
-  },
-
   keywords: ["EaMZ"],
 
   openGraph: {

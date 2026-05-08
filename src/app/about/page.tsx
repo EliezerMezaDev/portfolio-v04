@@ -67,11 +67,11 @@ export default function AboutPage() {
           <FontAwesomeIcon icon={faChevronLeft} className="pr-10 text-black" />
         </FixedButton>
 
-        <Hero
+        {/* <Hero
           title="Sobre mi"
           desc="Un breve resumen de mi camino como desarrollador de software."
           coverImg={Portrait}
-        />
+        /> */}
 
         <div className="container mx-auto my-10 grid grid-cols-1 gap-10">
           <motion.div
