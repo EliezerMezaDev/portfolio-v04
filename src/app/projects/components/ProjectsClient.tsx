@@ -14,18 +14,34 @@ interface ProjectWithTechNames extends Project {
   techNames: string[]
 }
 
-const categories: { id: number; label: string }[] = [
-  { id: 1, label: "Desarrollo Web" },
-  { id: 2, label: "Mobile" },
-  { id: 3, label: "Otro" },
+const categories = [
+  { id: 0, label: "Todos", techCategory: null },
+  { id: 1, label: "Frontend", techCategory: "frontend" },
+  { id: 2, label: "Mobile", techCategory: "mobile" },
+  { id: 3, label: "Backend", techCategory: "backend" },
 ]
 
 interface ProjectsClientProps {
   projects: ProjectWithTechNames[]
 }
 
+const techCategoryMap: Record<string, string> = {
+  nextjs: "frontend",
+  react: "frontend",
+  nuxt: "frontend",
+  astro: "frontend",
+  angular: "frontend",
+  ionic: "mobile",
+  flutter: "mobile",
+  dart: "mobile",
+  nodejs: "backend",
+  django: "backend",
+  strapi: "backend",
+  bun: "backend",
+}
+
 export default function ProjectsClient({ projects }: ProjectsClientProps) {
-  const [activeCategory, setActiveCategory] = useState<number>(1)
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -47,7 +63,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, type: "spring" }}
             >
-              Otros proyectos
+              Proyectos
             </motion.h1>
           </div>
         </div>
@@ -56,20 +72,26 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
           initial={{ opacity: 0, x: 200 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ type: "spring" }}
-          className="my-5 flex flex-row flex-wrap items-start justify-center gap-3 md:gap-5"
+          className="my-5 flex flex-row flex-wrap items-start justify-center "
         >
-          {categories.map((category, index) => {
-            const isActive = activeCategory === category.id
-            return (
-              <Button
-                key={index}
-                variation={isActive ? "primary" : "secondary"}
-                onClick={() => !isActive && setActiveCategory(category.id)}
-              >
-                {category.label}
-              </Button>
-            )
-          })}
+          <span className="flex rounded-full border border-main overflow-hidden">
+            {categories.map((category) => {
+              const isActive = activeCategory === category.techCategory
+              return (
+                <button
+                  key={category.id}
+                  className={`title box-border cursor-pointer px-6 py-2 text-lg transition duration-300 ease-in-out ${
+                    isActive
+                      ? "border border-transparent bg-linear-to-r from-main to-main/85 text-light hover:scale-95"
+                      : "border border-black/5 bg-linear-to-r from-light-2 to-light-3/15 text-main hover:scale-95"
+                  }}`}
+                  onClick={() => setActiveCategory(category.techCategory)}
+                >
+                  {category.label}
+                </button>
+              )
+            })}
+          </span>
         </motion.div>
 
         <div className="container mx-auto mb-10 grid w-screen cursor-pointer grid-cols-1 gap-4 px-10 md:grid-cols-2">

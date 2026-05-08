@@ -47,7 +47,7 @@ export default function ArchiveClient({ projects }: ArchiveClientProps) {
             </motion.h1>
           </div>
 
-          <div className="mb-container mx-auto grid grid-cols-1 md:px-10">
+          <div className="w-full mx-auto grid grid-cols-1 md:px-10">
             <table className="space-y-3">
               <thead>
                 <tr className="ease transition-all duration-500">
@@ -60,7 +60,7 @@ export default function ArchiveClient({ projects }: ArchiveClientProps) {
               <tbody>
                 {projects.map((project) => (
                   <tr key={project.slug} className="ease transition-all duration-500">
-                    <td>{project.year}</td>
+                    <td>{project.date}</td>
                     <td>
                       <Link href={`/projects/${project.slug}`}>{project.title}</Link>
                     </td>
