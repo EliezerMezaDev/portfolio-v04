@@ -22,6 +22,7 @@ const jost = Jost({
 })
 
 export const metadata = {
+  manifest: "/manifest.json",
   metadataBase: new URL("https://eamz.netlify.app/"),
   title: "EaMZ | Portofolio",
 
@@ -55,7 +56,7 @@ const jsonLd = {
   "@type": "Person",
   name: "Eliezer A Meza",
   url: "https://eamz.netlify.app/",
-  jobTitle: "Fullstack developer",
+  jobTitle: "Frontend Engineer",
   sameAs: [
     "https://github.com/EliezerMezaDev/",
     "https://www.linkedin.com/in/eliezer-a-meza-7a1b882b9/",

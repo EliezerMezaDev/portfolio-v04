@@ -27,11 +27,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons"
 
 const ScrollIndicator = () => {
   const { activeIndex } = useFullPage()
-  const [dismissed, setDismissed] = useState(false)
-
-  useEffect(() => {
-    if (activeIndex !== 0) setDismissed(true)
-  }, [activeIndex])
+  const dismissed = activeIndex !== 0
 
   return (
     <AnimatePresence>
@@ -266,8 +262,8 @@ export default function RootPage() {
           content={
             <>
               Una breve introducción a mi viaje{" "}
-              <br className="hidden md:block lg:hidden" /> como desarrollador{" "}
-              <br className="hidden lg:block xl:hidden" /> de software.
+              <br className="hidden md:block lg:hidden" /> como Ingeniero{" "}
+              <br className="hidden lg:block xl:hidden" /> Frontend.
             </>
           }
           buttons={
