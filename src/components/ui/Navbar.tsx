@@ -148,8 +148,8 @@ const Navbar = () => {
       <nav
         ref={navRef}
         className={`navbar px-5 md:px-24 w-screen fixed transition-colors ease duration-500 ${isNavOpen
-          ? "backdrop-filter backdrop-blur-md bg-main"
-          : "backdrop-filter backdrop-blur-md"
+          ? " bg-main"
+          : ""
           } inset-0 flex flex-row justify-between items-center h-16 z-50 `}
       >
         <div>
@@ -175,11 +175,11 @@ const Navbar = () => {
             onClick={toggleNav}
           >
             <div
-              className={`w-10 h-1 bg-light-4 rounded-full transition-all ease duration-300 ${isNavOpen ? "rotate-45   bg-white translate-y-[2px]" : ""
+              className={`w-10 h-1 bg-black rounded-full transition-all ease duration-300 ${isNavOpen ? "rotate-45   bg-white translate-y-[2px]" : ""
                 }`}
             ></div>
             <div
-              className={`w-10 h-1 bg-light-4 rounded-full transition-all ease duration-300 ${isNavOpen ? "-rotate-45 -translate-y-2 bg-white" : ""
+              className={`w-10 h-1 bg-black rounded-full transition-all ease duration-300 ${isNavOpen ? "-rotate-45 -translate-y-2 bg-white" : ""
                 }`}
             ></div>
           </button>

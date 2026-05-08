@@ -14,7 +14,7 @@ export const CodeEffect = ({
   return (
     <span className={cn("inline-flex items-center tracking-wide", className)}>
       <span
-        className={cn("select-none", symbolClassName)}
+        className={cn("select-none hidden lg:block", symbolClassName)}
         aria-hidden="true"
       >
         &lt;
@@ -23,7 +23,7 @@ export const CodeEffect = ({
       {children}
 
       <span
-        className={cn("select-none ml-1.5", symbolClassName)}
+        className={cn("select-none hidden lg:block ml-0.5", symbolClassName)}
         aria-hidden="true"
       >
         /&gt;

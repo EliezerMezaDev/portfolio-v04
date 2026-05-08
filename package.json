@@ -4,14 +4,14 @@
     "name": "Eliezer A Meza",
     "email": "eliezermeza.dev@gmail.com"
   },
-  "version": "1.0.0",
+  "version": "5.0.3",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "next lint",
-    "generate-sitemap": "node generate-sitemap.js"
+    "sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
     "@alvalens/react-fullpage-snap": "^1.0.2",
