@@ -1,27 +1,27 @@
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import Button from "@components/ui/Button";
-import Hr from "@components/ui/Hr";
+import Image from "next/image"
+import Link from "next/link"
+import { motion } from "framer-motion"
+import Button from "@components/ui/Button"
+import Hr from "@components/ui/Hr"
 
 // images
-import Intervyou1 from "@public/placeholder.jpg";
-import Intervyou2 from "@public/placeholder.jpg";
-import Intervyou3 from "@public/placeholder.jpg";
+import Intervyou1 from "@public/placeholder.jpg"
+import Intervyou2 from "@public/placeholder.jpg"
+import Intervyou3 from "@public/placeholder.jpg"
 
 const Hightlight = () => {
   return (
     <>
-      <div className="mt-10 flex flex-col justify-start items-center w-full pl-10 md:pl-32">
-        <div className="flex justify-center items-center flex-col my-5 self-start ">
+      <div className="mt-10 flex w-full flex-col items-center justify-start pl-10 md:pl-32">
+        <div className="my-5 flex flex-col items-center justify-center self-start">
           <Hr variant="long"></Hr>
-          <h1 className="text-3xl font-bold mt-3">Highlight</h1>
+          <h1 className="mt-3 text-3xl font-bold">Highlight</h1>
         </div>
       </div>
-      <div className="relative w-screen mx-auto container gap-4 px-10 grid grid-cols-1 md:grid-cols-2 mb-10">
-        <div className="flex justify-center items-start flex-col mb-5 ">
-          <div className="images relative w-full  aspect-square">
-            <div className="absolute top-28 left-10 h-[40%]  aspect-video grayscale hover:grayscale-0 transition-all ease duration-300 hover:scale-150 z-10">
+      <div className="relative container mx-auto mb-10 grid w-screen grid-cols-1 gap-4 px-10 md:grid-cols-2">
+        <div className="mb-5 flex flex-col items-start justify-center">
+          <div className="images relative aspect-square w-full">
+            <div className="ease absolute top-28 left-10 z-10 aspect-video h-[40%] grayscale transition-all duration-300 hover:scale-150 hover:grayscale-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.5, x: 100 }}
                 whileInView={{
@@ -29,7 +29,7 @@ const Hightlight = () => {
                   scale: 1,
                   x: 0,
                 }}
-                className="relative w-full h-full shadow-lg"
+                className="relative h-full w-full shadow-lg"
               >
                 <Image
                   src={Intervyou1}
@@ -41,7 +41,7 @@ const Hightlight = () => {
                 />
               </motion.div>
             </div>
-            <div className="absolute top-10 right-28 h-[30%]  aspect-video grayscale hover:grayscale-0 transition-all ease duration-300 hover:scale-150">
+            <div className="ease absolute top-10 right-28 aspect-video h-[30%] grayscale transition-all duration-300 hover:scale-150 hover:grayscale-0">
               <motion.div
                 initial={{
                   opacity: 0,
@@ -54,7 +54,7 @@ const Hightlight = () => {
                   x: 0,
                 }}
                 transition={{ delay: 0.3 }}
-                className="relative w-full h-full shadow-lg "
+                className="relative h-full w-full shadow-lg"
               >
                 <Image
                   src={Intervyou3}
@@ -67,7 +67,7 @@ const Hightlight = () => {
                 />
               </motion.div>
             </div>
-            <div className="absolute bottom-10 md:bottom-26 right-20 h-[35%]  aspect-video grayscale hover:grayscale-0 transition-all ease duration-300 hover:scale-150">
+            <div className="ease absolute right-20 bottom-10 aspect-video h-[35%] grayscale transition-all duration-300 hover:scale-150 hover:grayscale-0 md:bottom-26">
               <motion.div
                 initial={{
                   opacity: 0,
@@ -82,7 +82,7 @@ const Hightlight = () => {
                 transition={{
                   delay: 0.5,
                 }}
-                className="relative w-full h-full shadow-lg"
+                className="relative h-full w-full shadow-lg"
               >
                 <Image
                   src={Intervyou2}
@@ -97,7 +97,7 @@ const Hightlight = () => {
           </div>
         </div>
         <motion.div
-          className="flex justify-center items-start flex-col mb-5 md:px-10"
+          className="mb-5 flex flex-col items-start justify-center md:px-10"
           initial={{
             opacity: 0,
             x: 200,
@@ -111,11 +111,10 @@ const Hightlight = () => {
             type: "spring",
           }}
         >
-          <h2 className="text-2xl font-bold tracking-wider mb-3">
-            Lorem
-          </h2>
-          <p className="text-gray-600 text-justify title text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+          <h2 className="mb-3 text-2xl font-bold tracking-wider">Lorem</h2>
+          <p className="title text-justify text-lg text-gray-600">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+            quod.
           </p>{" "}
           <div className="mt-3">
             <Button variation="primary">
@@ -134,7 +133,7 @@ const Hightlight = () => {
         </motion.div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Hightlight;
+export default Hightlight
