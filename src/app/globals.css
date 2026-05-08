@@ -1,25 +1,45 @@
 @import "tailwindcss";
 
+:root {
+	--base-darken: #011d2f;
+	--base-dark: #042a42;
+	--base: #04304c;
+	--base-light: #034e7e;
+
+	--main: #0474ba;
+	--main-light: #00a7e1;
+
+	--accent: #F79B23;
+	--accent-alt: #fa9128;
+
+	/* FOR TEXT */
+	--light: #f5f5f5;
+	--light-2: #F0ECE5;
+	--light-3: #D6D1C2;
+	--light-4: #A5A29A;
+	--light-5: #767369;
+}
+
 @theme {
 	/* ----- COLORS ----- */
 	/* FOR LAYOUT */
-	--color-base-darken: #011d2f;
-	--color-base-dark: #042a42;
-	--color-base: #04304c;
-	--color-base-light: #034e7e;
+	--color-base-darken: var(--base-darken);
+	--color-base-dark: var(--base-dark);
+	--color-base: var(--base);
+	--color-base-light: var(--base-light);
 
-	--color-main: #0474ba;
-	--color-main-light: #00a7e1;
+	--color-main: var(--main);
+	--color-main-light: var(--main-light);
 
-	--color-accent: #F79B23;
-	--color-accent-alt: #fa9128;
+	--color-accent: var(--accent);
+	--color-accent-alt: var(--accent-alt);
 
 	/* FOR TEXT */
-	--color-light: #f5f5f5;
-	--color-light-2: #F0ECE5;
-	--color-light-3: #D6D1C2;
-	--color-light-4: #A5A29A;
-	--color-light-5: #767369;
+	--color-light: var(--light);
+	--color-light-2: var(--light-2);
+	--color-light-3: var(--light-3);
+	--color-light-4: var(--light-4);
+	--color-light-5: var(--light-5);
 }
 
 @layer {
