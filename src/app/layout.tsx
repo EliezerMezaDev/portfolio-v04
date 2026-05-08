@@ -1,8 +1,9 @@
 import "./globals.css"
-import { Poppins, Jost } from "next/font/google"
+import { Poppins, Jost, JetBrains_Mono } from "next/font/google"
 import Navbar from "@components/ui/Navbar"
 import { config } from "@fortawesome/fontawesome-svg-core"
 import "@fortawesome/fontawesome-svg-core/styles.css"
+
 config.autoAddCss = false
 
 const poppins = Poppins({

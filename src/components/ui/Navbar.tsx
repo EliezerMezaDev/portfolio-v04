@@ -153,14 +153,14 @@ const Navbar = () => {
       <nav
         ref={navRef}
         className={`navbar ease fixed w-screen px-5 transition-colors duration-500 md:px-24 ${
-          isNavOpen ? "bg-main" : ""
+          isNavOpen ? "bg-main" : "bg-light-2/25 backdrop-blur-2xl"
         } inset-0 z-50 flex h-16 flex-row items-center justify-between`}
       >
         <div>
           <Link href="/">
             <motion.h3
               className={`ml-2 text-2xl md:ml-0 md:text-3xl ${
-                isNavOpen ? "text-white" : "text-accent"
+                isNavOpen ? "text-white" : "text-main"
               } font-bold`}
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}

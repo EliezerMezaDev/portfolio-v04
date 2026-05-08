@@ -21,7 +21,7 @@ const Sidebar = () => {
 
   return (
     <div className="fixed top-1/4 z-40 hidden h-[50vh] w-16 flex-col items-center justify-between rounded-e-3xl bg-dark py-6 md:flex">
-      <ul
+      <ol
         id="sidebar"
         className="-ml-1 flex h-full flex-col items-center justify-evenly text-light"
       >
@@ -52,7 +52,7 @@ const Sidebar = () => {
             </button>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   )
 }
