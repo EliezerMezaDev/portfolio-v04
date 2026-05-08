@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+
 export default function Hr({ variant }: { variant?: "short" | "long" }) {
   return (
     <>
@@ -28,7 +29,7 @@ export default function Hr({ variant }: { variant?: "short" | "long" }) {
             }}
             whileInView={{
               opacity: 1,
-              x: -50,
+              x: -25,
             }}
             transition={{
               delay: 0.4,
@@ -37,7 +38,7 @@ export default function Hr({ variant }: { variant?: "short" | "long" }) {
           ></motion.div>
         </>
       ) : (
-        <div className="flex justify-center items-center flex-col my-5">
+        <div className="flex justify-center items-center flex-col max-md:mt-4 my-2">
           <motion.div
             className="bg-accent w-20 h-1 rounded-full mb-2"
             initial={{
