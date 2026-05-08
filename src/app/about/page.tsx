@@ -4,8 +4,6 @@ import { AnimatePresence, motion } from "framer-motion"
 
 import FixedButton from "@components/ui/FixedButton"
 
-import Portrait from "@public/image/portrait-long.jpg"
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 
@@ -13,7 +11,6 @@ import Me from "@components/about/Me"
 import Skills from "@components/about/Skills"
 import Experience from "@components/about/Experience"
 import Education from "@components/about/Education"
-import Hero from "@components/ui/Hero"
 import { useFullPage } from "@alvalens/react-fullpage-snap"
 
 const ScrollIndicator = () => {
@@ -37,7 +34,7 @@ const ScrollIndicator = () => {
             Scroll
           </span>
           <motion.div
-            className="bg-accent h-14 w-[1.5px] origin-top"
+            className="h-14 w-[1.5px] origin-top bg-accent"
             animate={{
               scaleY: [0, 1, 1],
               opacity: [0, 1, 0],

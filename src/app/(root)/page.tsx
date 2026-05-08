@@ -12,10 +12,10 @@ import {
 
 // components
 import Button from "@components/ui/Button"
-import Me from "@public/image/portrait-long.jpg"
-import MeAbout from "@public/image/me1.jpg"
-import Setup from "@public/image/setup.jpg"
-import ProjectAll from "@public/image/projects.png"
+import Me from "@public/image/portrait-long.webp"
+import MeAbout from "@public/image/me1.webp"
+import Setup from "@public/image/setup.webp"
+import ProjectAll from "@public/image/projects.webp"
 import Hr from "@components/ui/Hr"
 
 // icons
@@ -46,7 +46,7 @@ const ScrollIndicator = () => {
             Scroll
           </span>
           <motion.div
-            className="bg-accent h-14 w-[1.5px] origin-top"
+            className="h-14 w-[1.5px] origin-top bg-accent"
             animate={{
               scaleY: [0, 1, 1],
               opacity: [0, 1, 0],

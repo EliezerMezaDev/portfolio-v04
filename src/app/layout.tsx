@@ -41,7 +41,7 @@ export const metadata = {
     description: "My name is Eliezer A Meza, This is my portofolio website.",
     images: [
       {
-        url: "/og-image-rev.png",
+        url: "/og-image-rev.webp",
         alt: "EaMZ Portofolio",
         width: 1200,
         height: 630,
