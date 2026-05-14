@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "lighthouse": {
+      "type": "local",
+      "command": ["npx", "-y", "lighthouse-mcp"],
+      "enabled": true
+    }
+  }
+}

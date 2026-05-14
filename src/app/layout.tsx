@@ -24,22 +24,52 @@ const jost = Jost({
 export const metadata = {
   manifest: "/manifest.json",
   metadataBase: new URL("https://eamz.netlify.app/"),
-  title: "EaMZ | Portofolio",
+  title: {
+    default: "EaMZ | Portofolio",
+    template: "%s | EaMZ",
+  },
 
-  description: "My name is Eliezer A Meza, This is my portofolio website.",
-
-  author: "Eliezer A Meza",
+  description:
+    "Eliezer A Meza - Frontend Engineer con +5 años de experiencia en arquitecturas escalables y aplicaciones híbridas. Especializado en Fintech.",
+  authors: [{ name: "Eliezer A Meza", url: "https://eamz.netlify.app/" }],
+  creator: "Eliezer A Meza",
+  publisher: "EaMZ",
   siteUrl: "https://eamz.netlify.app/",
   applicationName: "EaMZ",
 
-  keywords: ["EaMZ"],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  keywords: [
+    "Eliezer Meza",
+    "Frontend Engineer",
+    "Portfolio",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Web Developer",
+    "Desarrollador Frontend",
+    "Fintech",
+    "EaMZ",
+  ],
 
   openGraph: {
     type: "website",
+    locale: "en_US",
     url: "https://eamz.netlify.app/",
     title: "EaMZ | Portofolio",
     siteName: "EaMZ | Portofolio",
-    description: "My name is Eliezer A Meza, This is my portofolio website.",
+    description:
+      "Eliezer A Meza - Frontend Engineer con +5 años de experiencia en arquitecturas escalables y aplicaciones híbridas.",
     images: [
       {
         url: "/og-image-rev.webp",
@@ -48,6 +78,15 @@ export const metadata = {
         height: 630,
       },
     ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "EaMZ | Portofolio",
+    description:
+      "Eliezer A Meza - Frontend Engineer con +5 años de experiencia en arquitecturas escalables y aplicaciones híbridas.",
+    images: ["/og-image-rev.webp"],
+    creator: "@EliezerMezaDev",
   },
 }
 
